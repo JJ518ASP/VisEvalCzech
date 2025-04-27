@@ -1,0 +1,48 @@
+Nejprve zjistíme, kolik typů služeb má cenu produktu nad 100. Poté vytvoříme koláčový graf.
+
+Zde jsou data potřebná pro generování grafu:
+
+- Cena produktů (Product_Price) a typy služeb (Service_Type_Code):
+  - 58932775.8822, 2704.4719, 6888.8306, 31862.0853, 213.9459, 8004.988, 3499362.8145, 5396.2935, 19845767.8923, 7299.6747, 641544.2835, 827055.7309, 9130.7326, 84063402.4351, 187358.6469
+
+Na základě těchto dat spočítáme typy služeb s cenou produktu nad 100 a vytvoříme koláčový graf.
+
+```python
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Data
+service_types = [
+    {'Service_Type_Code': 1, 'Product_Price': 58932775.8822},
+    {'Service_Type_Code': 2, 'Product_Price': 2704.4719},
+    {'Service_Type_Code': 3, 'Product_Price': 6888.8306},
+    {'Service_Type_Code': 4, 'Product_Price': 31862.0853},
+    {'Service_Type_Code': 5, 'Product_Price': 213.9459},
+    {'Service_Type_Code': 6, 'Product_Price': 8004.988},
+    {'Service_Type_Code': 7, 'Product_Price': 3499362.8145},
+    {'Service_Type_Code': 8, 'Product_Price': 5396.2935},
+    {'Service_Type_Code': 9, 'Product_Price': 19845767.8923},
+    {'Service_Type_Code': 10, 'Product_Price': 7299.6747},
+    {'Service_Type_Code': 11, 'Product_Price': 641544.2835},
+    {'Service_Type_Code': 12, 'Product_Price': 827055.7309},
+    {'Service_Type_Code': 13, 'Product_Price': 9130.7326},
+    {'Service_Type_Code': 14, 'Product_Price': 84063402.4351},
+    {'Service_Type_Code': 15, 'Product_Price': 187358.6469}
+]
+
+# Convert to DataFrame
+df = pd.DataFrame(service_types)
+
+# Count service types with product price above 100
+count_above_100 = df[df['Product_Price'] > 100].count()['Service_Type_Code']
+count_below_or_equal_100 = df[df['Product_Price'] <= 100].count()['Service_Type_Code']
+
+# Data for pie chart
+labels = ['Above 100', '100 or Below']
+sizes = [count_above_100, count_below_or_equal_100]
+
+# Plot pie chart
+plt.figure(figsize=(8, 6))
+plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
+plt.title('Distribution of Service Types by Product Price')
+plt

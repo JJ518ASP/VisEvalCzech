@@ -1,0 +1,42 @@
+Nejprve zjistíme, kolik objednávek má cenu vyšší než 1000. Z dat v souboru `Products.csv` vybereme produkty, jejichž cena je větší než 1000, a poté spočítáme, kolik objednávek odpovídá těmto produktům v souboru `Order_Items.csv`.
+
+Zde je Python kód pro generování čárového grafu:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data z Products.csv
+products_data = {
+    'Product_ID': [11, 154, 156, 179, 188, 21, 216, 232, 233, 250, 273, 300, 46, 81, 83],
+    'Product_Name': ['foto', 'film', 'film', 'film', 'film', 'foto', 'film', 'foto', 
+                     'foto', 'foto', 'foto', 'stolování', 'stolování', 'stolování', 'film'],
+    'Product_Price': [4448536, 2302, 17622723, 1432324, 49097627, 22082866, 157216, 22, 
+                      4082352, 797, 1577, 30625, 50828, 634660, 900]
+}
+
+# Data z Order_Items.csv
+order_items_data = {
+    'Order_Item_ID': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    'Order_ID': [3, 15, 12, 4, 3, 5, 10, 4, 12, 11, 2, 12, 6, 1, 7],
+    'Product_ID': [233, 300, 300, 273, 46, 83, 179, 156, 216, 46, 300, 156, 233, 81, 300],
+    'Order_Quantity': [1, 2, 1, 1, 2, 2, 2, 1, 1, 1, 1, 2, 1, 1, 2]
+}
+
+# Vytvoření DataFrame
+products_df = pd.DataFrame(products_data)
+order_items_df = pd.DataFrame(order_items_data)
+
+# Filtrace produktů s cenou vyšší než 1000
+expensive_products = products_df[products_df['Product_Price'] > 1000]
+
+# Získání ID produktů s cenou vyšší než 1000
+expensive_product_ids = expensive_products['Product_ID'].unique()
+
+# Počet objednávek s produkty dražšími než 1000
+order_count = order_items_df[order_items_df['Product_ID'].isin(expensive_product_ids)].groupby('Order_ID').size()
+
+# Vytvoření čárového grafu
+plt.figure(figsize=(10, 5))
+plt.plot(order_count.index, order_count.values, marker='o')
+plt.title('Počet objednávek s cenou vyšší než

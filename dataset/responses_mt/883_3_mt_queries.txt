@@ -1,0 +1,37 @@
+Nejprve zjistíme, kolik typů služeb má cenu vyšší než 100 a poté vygenerujeme koláčový graf. Zde jsou potřebná data:
+
+- Typy služeb s cenou vyšší než 100:
+  - Služba ID 191, cena 58932775.8822
+  - Služba ID 219, cena 2704.4719
+  - Služba ID 220, cena 6888.8306
+  - Služba ID 396, cena 31862.0853
+  - Služba ID 414, cena 213.9459
+  - Služba ID 421, cena 8004.988
+  - Služba ID 525, cena 3499362.8145
+  - Služba ID 597, cena 5396.2935
+  - Služba ID 630, cena 19845767.8923
+  - Služba ID 640, cena 7299.6747
+  - Služba ID 662, cena 641544.2835
+  - Služba ID 773, cena 827055.7309
+  - Služba ID 779, cena 9130.7326
+  - Služba ID 798, cena 84063402.4351
+  - Služba ID 840, cena 187358.6469
+
+Koláčový graf bude mít dvě sekce: "Služby dražší než 100" a "Služby levnější nebo rovny 100".
+
+Zde je Python kód pro generování koláčového grafu:
+
+```python
+import matplotlib.pyplot as plt
+
+# Data pro graf
+labels = ['Služby dražší než 100', 'Služby levnější nebo rovny 100']
+sizes = [14, 0]  # 14 typů služeb dražších než 100, 0 typů služeb levnějších nebo rovno 100
+
+# Vytvoření koláčového grafu
+plt.figure(figsize=(8, 6))
+plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90, colors=['#ff9999','#66b3ff'])
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.title('Počet typů služeb podle ceny')
+plt.show()
+```

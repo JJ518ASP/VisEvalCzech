@@ -1,0 +1,38 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+catalog_contents = {
+    "catalog_entry_id": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    "catalog_entry_name": [
+        "Cola", "Kořenové pivo", "Smetanová limonáda", "Sycená voda", 
+        "Zázvorové pivo", "Tizer", "Vimto", "Ramune", 
+        "Sprite Lemo", "Dr Pepper", "Dietní Pepsi", 
+        "Dietní limonáda Mountain Dew", "Mountain Dew", 
+        "Fenta Orange", "Wanglaoji"
+    ],
+    "price_in_dollars": [
+        200.78, 687.59, 360.5, 667.89, 616.22, 
+        642.37, 745.02, 574.35, 952.37, 777.41, 
+        808.31, 883.43, 475.79, 415.92, 533.6
+    ],
+    "kapacita": [
+        1, 8, 5, 8, 5, 6, 6, 4, 8, 1, 
+        9, 8, 7, 7, 4
+    ]
+}
+
+# Creating DataFrame
+df = pd.DataFrame(catalog_contents)
+
+# Filtering items with price higher than 700 dollars
+filtered_items = df[df['price_in_dollars'] > 700][['catalog_entry_name', 'kapacita']]
+
+# Plotting
+plt.figure(figsize=(8, 6))
+plt.pie(filtered_items['kapacita'], labels=filtered_items['catalog_entry_name'], autopct='%1.1f%%')
+plt.title('Katalogové položky s cenou vyšší než 700 dolarů')
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.show()
+```

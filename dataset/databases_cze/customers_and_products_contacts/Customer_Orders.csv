@@ -1,0 +1,16 @@
+id_objednavky,id_zakaznika,datum_objednavky,kod_statusu_objednavky
+1,2,19. 07. 2009 13:40:49,Dokončeno
+2,2,28. 05. 1976 15:02:44,Částečně dokončeno
+3,6,09. 03. 1979 02:47:13,Dokončeno
+4,4,17. 01. 2003 00:06:12,Částečně dokončeno
+5,13,19. 04. 1992 21:42:58,Dokončeno
+6,4,17. 03. 1972 21:42:29,Částečně dokončeno
+7,10,20. 01. 2002 01:52:53,Částečně dokončeno
+8,2,03. 01. 1985 05:22:09,Částečně dokončeno
+9,9,17. 09. 2016 03:00:47,Dokončeno
+10,5,04. 12. 1971 19:14:18,Dokončeno
+11,10,08. 05. 1993 14:12:06,Dokončeno
+12,10,14. 06. 1998 21:22:53,Dokončeno
+13,9,02. 08. 1997 09:44:57,Částečně dokončeno
+14,3,13. 07. 1979 17:19:40,Částečně dokončeno
+15,1,19. 01. 2007 07:54:50,Dokončeno

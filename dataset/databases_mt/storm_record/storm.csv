@@ -1,0 +1,11 @@
+Storm_ID,Název,Dates_active,Max_speed,Škoda_miliony_USD,Počet_úmrtí
+1,Jeden,19. května - 25. května,995,13.0,0
+2,Dva,Od 3. srpna do 10. srpna,972,10.75,7
+3,Tři,5. srpna - 14. srpna,972,13.0,52
+4,Čtyři,26. srpna - 2. září,961,4.05,7
+5,Pět,7. září - 17. září,988,1.49,3
+6,Šest,18. září-25. září,1002,0.039,2
+7,Sedm,22. září - 28. září,977,13.0,0
+8,Osm,20. října - 24. října,983,13.0,0
+9,Devět,24. října-26. října,1007,13.0,0
+10,9 cyklónů,Květen19 - říjen26,961,29.3,71

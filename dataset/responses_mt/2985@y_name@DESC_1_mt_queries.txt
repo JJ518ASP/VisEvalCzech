@@ -1,0 +1,37 @@
+Nejprve shromáždíme potřebná data z tabulek `Transactions.csv` a `Ref_Transaction_Types.csv`. Poté provedeme zpracování dat, aby bylo možné seskupit transakce podle typu a počtu dnů v týdnu, a nakonec vytvoříme sloupcový graf.
+
+Zde je kód pro generování grafu v Pythonu:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+transactions_data = {
+    'transaction_id': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    'investor_id': [6, 18, 2, 14, 8, 19, 7, 17, 20, 2, 3, 18, 3, 3, 19],
+    'transaction_type_code': ['PRODEJ', 'PUR', 'PRODEJ', 'PUR', 'PUR', 'PUR', 'PUR', 'PRODEJ', 'PUR', 'PRODEJ', 'PRODEJ', 'PRODEJ', 'PRODEJ', 'PUR', 'PUR'],
+    'date_of_transaction': [
+        '1988-09-16 19:02:51', '1982-06-06 17:19:00', '1979-04-27 06:03:59',
+        '2001-11-28 15:06:25', '1977-08-17 13:13:30', '1985-10-08 13:13:39',
+        '1990-12-02 09:03:38', '2004-01-18 20:37:50', '1977-08-13 02:18:47',
+        '1981-01-28 08:07:03', '2000-04-03 20:55:43', '1983-11-01 17:57:27',
+        '2002-04-07 20:28:37', '2002-09-13 03:04:56', '1997-12-30 05:05:40'
+    ],
+    'share_count': [8718572.0, 9.0, 8580.0, 8040.0, 930.0, 2751.0, 1522.0, 96178.0, None, 1654756.0, 674529892.0, 587.0, None, 630021.0, 93191.0]
+}
+
+ref_transaction_types_data = {
+    'transaction_type_code': ['PRODEJ', 'PUR'],
+    'transaction_type_description': ['Prodej', 'Nákup']
+}
+
+# Vytvoření DataFrame
+transactions_df = pd.DataFrame(transactions_data)
+ref_transaction_types_df = pd.DataFrame(ref_transaction_types_data)
+
+# Sloučení DataFrame
+merged_df = pd.merge(transactions_df, ref_transaction_types_df, on='transaction_type_code')
+
+# Převod 'date_of_transaction' na datetime
+merged_df['date_of_transaction'] = pd.to_datetime(

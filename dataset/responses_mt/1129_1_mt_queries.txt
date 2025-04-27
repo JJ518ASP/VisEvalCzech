@@ -1,0 +1,25 @@
+Nejprve zjistíme nejvyšší cenu výrobku seskupeného podle typu výrobku. Zde jsou potřebná data:
+
+Typ výrobku a jejich maximální ceny jsou následující:
+- Oblečení: 939.57
+- Hardware: 944.96
+
+Nyní vygenerujeme sloupcový graf pomocí Python kódu:
+
+```python
+import matplotlib.pyplot as plt
+
+# Data
+product_types = ['Oblečení', 'Hardware']
+max_prices = [939.57, 944.96]
+
+# Vytvoření sloupcového grafu
+plt.bar(product_types, max_prices, color=['blue', 'green'])
+plt.title('Nejvyšší cena výrobku podle typu výrobku')
+plt.xlabel('Typ výrobku')
+plt.ylabel('Nejvyšší cena (v Kč)')
+plt.ylim(0, 1000)
+
+# Zobrazení grafu
+plt.show()
+```

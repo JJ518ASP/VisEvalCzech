@@ -1,0 +1,40 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+data = {
+    'id_studenta': [6, 3, 8, 7, 13, 11, 4, 2, 7, 4, 8, 5, 2, 2, 9, 13, 15, 12, 1, 10],
+    'datum_na_adresu': [
+        '15. 03. 2018 10:37:19', '02. 03. 2018 00:19:57', '25. 02. 2018 05:21:34',
+        '23. 03. 2018 09:52:56', '12. 03. 2018 17:21:24', '27. 02. 2018 04:45:57',
+        '04. 03. 2018 17:04:35', '20. 03. 2018 09:02:48', '22. 03. 2018 17:56:20',
+        '04. 03. 2018 06:51:19', '04. 03. 2018 06:05:45', '14. 03. 2018 09:12:05',
+        '06. 03. 2018 21:41:20', '07. 03. 2018 04:29:28', '12. 03. 2018 02:57:48',
+        '04. 03. 2018 13:24:28', '15. 03. 2018 04:44:58', '05. 03. 2018 21:12:37',
+        '14. 03. 2018 17:00:44', '18. 03. 2018 03:28:47'
+    ],
+    'dalsi_detaily': [
+        'dům', 'dům', 'byt', 'dům', 'byt', 'dům', 'dům', 'dům', 'dům', 'dům',
+        'dům', 'byt', 'dům', 'dům', 'dům', 'byt', 'byt', 'byt', 'dům', 'dům'
+    ]
+}
+
+# Vytvoření DataFrame
+df = pd.DataFrame(data)
+
+# Převod sloupce datum_na_adresu na datetime
+df['datum_na_adresu'] = pd.to_datetime(df['datum_na_adresu'], format='%d. %m. %Y %H:%M:%S')
+
+# Extrakce měsíce
+df['mesic'] = df['datum_na_adresu'].dt.month
+
+# Seskupení dat podle dalších detailů a měsíce
+grouped = df.groupby(['dalsi_detaily', 'mesic']).size().unstack(fill_value=0)
+
+# Vytvoření sloupcového grafu
+grouped.plot(kind='bar', stacked=True)
+
+plt.title('Rozložení datum_na_adresu podle dalších detailů')
+plt.xlabel('Další detaily')
+plt.ylabel('Množství datum_na_ad

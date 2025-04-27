@@ -1,0 +1,35 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data pro typy služeb a jejich ceny
+data = {
+    'Popis_typu_sluzby': [
+        'poskytovat fotografické služby',
+        'poskytovat stravovací služby',
+        'poskytovat nahrávací služby',
+        'poskytovat služby na propagaci reklamy'
+    ],
+    'Cena_produktu': [
+        1281787875.4378,  # cena pro foto
+        1587679247.9247,  # cena pro stravování
+        0,                # cena pro nahrávací služby
+        0                 # cena pro propagaci reklamy
+    ]
+}
+
+df = pd.DataFrame(data)
+
+# Filtrujeme služby s cenou vyšší než 2,175
+df_filtered = df[df['Cena_produktu'] > 2175]
+
+# Počet popisů typů služeb
+counts = df_filtered['Popis_typu_sluzby'].value_counts()
+
+# Generování koláčového grafu
+plt.figure(figsize=(8, 6))
+plt.pie(counts, labels=counts.index, autopct='%1.1f%%', startangle=140)
+plt.title('Počet typů služeb s cenou vyšší než 2 175')
+plt.axis('equal')  # Zajistí, že graf bude kruhový
+plt.show()
+```

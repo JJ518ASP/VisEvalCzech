@@ -1,0 +1,47 @@
+Níže je Python kód, který provede analýzu a vizualizaci požadovaných dat.
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+data = {
+    'datum_na_adresu': [
+        '15. 03. 2018', '02. 03. 2018', '25. 02. 2018', '23. 03. 2018', 
+        '12. 03. 2018', '27. 02. 2018', '04. 03. 2018', '20. 03. 2018', 
+        '04. 03. 2018', '06. 03. 2018', '12. 03. 2018', '17. 03. 2018', 
+        '15. 03. 2018', '04. 03. 2018', '18. 03. 2018', '03. 03. 2018', 
+        '18. 03. 2018', '12. 03. 2018', '14. 03. 2018'
+    ],
+    'dalsi_detaily': [
+        'dům', 'dům', 'byt', 'dům', 'byt', 'dům', 'dům', 'dům', 
+        'dům', 'dům', 'byt', 'dům', 'byt', 'dům', 'dům', 'dům', 
+        'dům', 'dům', 'dům'
+    ]
+}
+
+# Vytvoření DataFrame
+df = pd.DataFrame(data)
+
+# Převod sloupce datum_na_adresu na datetime
+df['datum_na_adresu'] = pd.to_datetime(df['datum_na_adresu'], format='%d. %m. %Y')
+
+# Extrakce měsíce a roku
+df['měsíc'] = df['datum_na_adresu'].dt.month
+df['rok'] = df['datum_na_adresu'].dt.year
+
+# Počítání výskytů podle měsíce a dalších detailů
+summary = df.groupby(['rok', 'měsíc', 'dalsi_detaily']).size().unstack(fill_value=0)
+
+# Graf
+summary.plot(kind='bar', stacked=True, figsize=(10, 6))
+plt.title('Počet adres podle měsíce a dalších detailů')
+plt.xlabel('Rok a měsíc')
+plt.ylabel('Počet adres')
+plt.xticks(rotation=0)
+plt.legend(title='Další detaily')
+plt.tight_layout()
+plt.show()
+``` 
+
+Tento kód vytvoří sloupcový graf, který ukazuje počet adres rozdělených podle měsíců a kategorií „dalsi_detaily“. Graf bude mít legendu, která zobrazuje různé kategorie.

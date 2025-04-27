@@ -1,0 +1,32 @@
+Nejprve potřebujeme zjistit počet bouří v jednotlivých regionech na základě poskytnutých dat. Zde jsou potřebné informace:
+
+- Regiony a jejich ID:
+  - Afghánistán (1)
+  - Albánie (2)
+  - Alžírsko (3)
+  - Americká Samoa (4)
+  - Andorra (5)
+
+- Počet bouří v jednotlivých regionech:
+  - Afghánistán: 2 bouře
+  - Albánie: 2 bouře
+  - Alžírsko: 1 bouře
+  - Americká Samoa: 1 bouře
+  - Andorra: 2 bouře
+
+Nyní generujeme koláčový graf:
+
+```python
+import matplotlib.pyplot as plt
+
+# Data pro koláčový graf
+regions = ['Afghánistán', 'Albánie', 'Alžírsko', 'Americká Samoa', 'Andorra']
+storm_counts = [2, 2, 1, 1, 2]
+
+# Vytvoření koláčového grafu
+plt.figure(figsize=(8, 8))
+plt.pie(storm_counts, labels=regions, autopct='%1.1f%%', startangle=90)
+plt.title('Počet bouří v jednotlivých regionech')
+plt.axis('equal')  # Aby byl koláč kulatý
+plt.show()
+```

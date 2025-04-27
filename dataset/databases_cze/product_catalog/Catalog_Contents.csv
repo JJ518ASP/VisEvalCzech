@@ -1,0 +1,16 @@
+id_zapisu_v_katalogu,cislo_urovne_katalogu,id_nadzapisu,id_predchoziho_zapisu,id_nadchazejiciho_zapisu,jmeno_katalogoveho_zapisu,skladove_cislo_produktu,cena_v_korunach,cena_v_eurech,cena_v_librach,kapacita,delka,vyska,sirka
+1,1,5,9,7,Cola,89 cp,"4 366,97","159,84","172,17",1,3,9,5
+2,8,6,9,8,Kořenové pivo,37 hq,"14 955,08","590,11","471,78",8,6,5,6
+3,8,6,6,1,Smetanová limonáda,52 ee,"7 840,88","202,32","110,32",5,9,7,8
+4,1,7,8,6,Sycená voda,15 mr,"14 526,61","458,45","349,01",8,6,2,1
+5,9,4,7,6,Zázvorové pivo,42 cp,"13 402,79","537,66","405,75",5,5,7,9
+6,1,3,4,8,Tizer,61 py,"13 971,55","434,21","331,43",6,6,7,1
+7,9,7,3,3,Vimto,01 ap,"16 204,19","510,32","497,4",6,9,6,5
+8,8,6,5,3,Ramune,53 bg,"12 492,11","441,82","440,52",4,4,7,5
+9,1,7,9,9,Sprite Lemo,24 ec,"20 714,05","703,17","433,82",8,7,1,3
+10,8,5,6,6,Dr Pepper,26 op,"16 908,67","616,54","572,41",1,6,1,6
+11,1,3,6,9,Dietní Pepsi,49 jg,"17 580,74","643,77","515,62",9,8,3,3
+12,8,4,5,3,Dietní Mountain Dew,96 zx,"19 214,6","752,87","678,01",8,8,1,3
+13,1,5,9,1,Mountain Dew,49 cz,"10 348,43","457,4","335,63",7,8,4,5
+14,9,3,5,8,Fenta Orange,65 wc,"9 046,26","385,85","371,9",7,4,3,7
+15,1,6,8,9,Wanglaoji,51 kr,"11 605,8","498,62","422,71",4,5,8,8

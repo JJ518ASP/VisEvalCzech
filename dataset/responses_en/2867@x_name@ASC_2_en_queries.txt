@@ -1,0 +1,49 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data for storms and affected regions
+storm_data = {
+    'Storm_ID': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    'Name': ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', '9 cyclones']
+}
+
+affected_region_data = {
+    'Region_id': [1, 2, 3, 1, 12, 2],
+    'Storm_ID': [1, 1, 3, 4, 5, 5],
+    'Number_city_affected': [10.0, 15.0, 30.0, 22.0, 37.0, 12.0]
+}
+
+# Creating DataFrames
+storms_df = pd.DataFrame(storm_data)
+affected_regions_df = pd.DataFrame(affected_region_data)
+
+# Counting storms in each region
+storm_counts = affected_regions_df['Region_id'].value_counts().reset_index()
+storm_counts.columns = ['Region_id', 'Storm_Count']
+
+# Merging with region names
+region_data = {
+    'Region_id': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+    'Region_name': ['Afghanistan', 'Albania', 'Algeria', 'American Samoa', 'Andorra', 
+                    'Angola', 'Anguilla', 'Antarctica', 'Antigua and Barbuda', 
+                    'Cyprus', 'Czech Republic', 'Denmark', 'Djibouti']
+}
+regions_df = pd.DataFrame(region_data)
+
+# Merging counts with region names
+merged_df = pd.merge(storm_counts, regions_df, on='Region_id', how='left')
+
+# Sorting by Region_name
+merged_df = merged_df.sort_values(by='Region_name')
+
+# Plotting
+plt.figure(figsize=(10, 6))
+plt.bar(merged_df['Region_name'], merged_df['Storm_Count'], color='skyblue')
+plt.xticks(rotation=45)
+plt.xlabel('Region Name')
+plt.ylabel('Number of Storms')
+plt.title('Number of Storms Occurred in Each Region')
+plt.tight_layout()
+plt.show()
+```

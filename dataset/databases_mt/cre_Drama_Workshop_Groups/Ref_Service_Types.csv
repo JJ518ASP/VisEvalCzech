@@ -1,0 +1,5 @@
+Service_Type_Code,Parent_Service_Type_Code,Service_Type_Description
+1,1,poskytovat fotografické služby
+2,1,poskytovat stravovací služby
+3,1,poskytovat filmovací služby
+4,1,poskytovat služby na podporu reklamy

@@ -1,0 +1,20 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data pro graf
+data = {
+    'Region': ['Afghánistán', 'Albánie', 'Alžírsko', 'Americká Samoa', 'Andorra'],
+    'Storm_Count': [2, 2, 1, 1, 1]
+}
+
+# Vytvoření DataFrame
+df = pd.DataFrame(data)
+
+# Vytvoření koláčového grafu
+plt.figure(figsize=(8, 8))
+plt.pie(df['Storm_Count'], labels=df['Region'], autopct='%1.1f%%', startangle=140)
+plt.title('Počet bouří v jednotlivých regionech')
+plt.axis('equal')  # Equal aspect ratio ensures that pie chart is a circle.
+plt.show()
+```

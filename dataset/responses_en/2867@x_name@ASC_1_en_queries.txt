@@ -1,0 +1,44 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data for affected_region.csv
+affected_data = {
+    'Region_id': [1, 2, 3, 1, 12, 2],
+    'Storm_ID': [1, 1, 3, 4, 5, 5],
+    'Number_city_affected': [10.0, 15.0, 30.0, 22.0, 37.0, 12.0]
+}
+
+# Data for region.csv
+region_data = {
+    'Region_id': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+    'Region_code': ['AF', 'AL', 'DZ', 'DS', 'AD', 'AO', 'AI', 'AQ', 'AG', 'CY', 'CZ', 'DK', 'DJ'],
+    'Region_name': ['Afghanistan', 'Albania', 'Algeria', 'American Samoa', 'Andorra', 
+                    'Angola', 'Anguilla', 'Antarctica', 'Antigua and Barbuda', 
+                    'Cyprus', 'Czech Republic', 'Denmark', 'Djibouti']
+}
+
+# Create DataFrames
+affected_df = pd.DataFrame(affected_data)
+region_df = pd.DataFrame(region_data)
+
+# Count number of storms per region
+storm_count = affected_df.groupby('Region_id')['Storm_ID'].nunique().reset_index()
+storm_count.columns = ['Region_id', 'Number_of_storms']
+
+# Merge with region names
+result_df = pd.merge(storm_count, region_df, on='Region_id')
+
+# Sort by Region_id
+result_df = result_df.sort_values(by='Region_id')
+
+# Plotting
+plt.figure(figsize=(10, 6))
+plt.bar(result_df['Region_name'], result_df['Number_of_storms'], color='skyblue')
+plt.xlabel('Region')
+plt.ylabel('Number of Storms')
+plt.title('Number of Storms by Region')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+```

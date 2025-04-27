@@ -1,0 +1,37 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+product_data = {
+    'product_id': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    'product_type_code': ['Clothes', 'Clothes', 'Clothes', 'Clothes', 'Clothes', 
+                          'Clothes', 'Clothes', 'Clothes', 'Clothes', 'Hardware', 
+                          'Hardware', 'Hardware', 'Hardware', 'Hardware', 'Hardware'],
+    'product_name': ['red jeans', 'yellow jeans', 'black jeans', 'blue jeans', 'red jeans', 
+                     'red topping', 'black topping', 'yellow topping', 'blue topping', 
+                     'monitor', 'mouse', 'drive', 'keyboard', 'speaker', 'mic'],
+    'product_price': [734.73, 687.23, 695.16, 939.57, 534.52, 408.82, 
+                      916.53, 918.41, 604.86, 813.76, 803.74, 944.96, 
+                      629.89, 612.46, 971.44]
+}
+
+# Create DataFrame
+df = pd.DataFrame(product_data)
+
+# Group by product type and get maximum price
+max_prices = df.groupby('product_type_code')['product_price'].max().reset_index()
+
+# Plotting
+plt.figure(figsize=(10, 6))
+plt.bar(max_prices['product_type_code'], max_prices['product_price'], color='skyblue')
+plt.xlabel('Product Type')
+plt.ylabel('Maximum Product Price')
+plt.title('Maximum Product Price for Each Product Type')
+plt.xticks(rotation=45)
+plt.grid(axis='y')
+
+# Show the plot
+plt.tight_layout()
+plt.show()
+```

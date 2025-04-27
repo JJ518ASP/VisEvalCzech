@@ -1,0 +1,33 @@
+Nejprve musíme z dat vybrat typy služeb s cenou vyšší než 100. Poté vytvoříme koláčový graf, který zobrazí počet těchto typů služeb. 
+
+Zde jsou relevantní informace vytažené z dat:
+- Služby s cenou vyšší než 100:
+  - foto (31862.0853)
+  - film (58932775.8822)
+  - film (84063402.4351)
+  - film (49097627)
+  - foto (19845767.8923)
+  - foto (8004.988)
+  - foto (5396.2935)
+  - stolování (7299.6747)
+  - stolování (641544.2835)
+
+Celkový počet těchto služeb je 9.
+
+Nyní vygenerujeme koláčový graf:
+
+```python
+import matplotlib.pyplot as plt
+
+# Data pro typy služeb
+service_types = ['foto', 'film', 'film', 'film', 'foto', 'foto', 'foto', 'stolování', 'stolování']
+service_counts = [service_types.count(service) for service in set(service_types)]
+service_labels = list(set(service_types))
+
+# Vytvoření koláčového grafu
+plt.figure(figsize=(8, 8))
+plt.pie(service_counts, labels=service_labels, autopct='%1.1f%%', startangle=140)
+plt.title('Rozložení typů služeb s cenou vyšší než 100')
+plt.axis('equal')  # Aby byl graf kruhový
+plt.show()
+```

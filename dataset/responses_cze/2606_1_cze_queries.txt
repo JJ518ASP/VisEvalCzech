@@ -1,0 +1,38 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+data = {
+    'jmeno_katalogoveho_zapisu': [
+        'Cola', 'Kořenové pivo', 'Smetanová limonáda', 'Sycená voda',
+        'Zázvorové pivo', 'Tizer', 'Vimto', 'Ramune', 'Sprite Lemo', 
+        'Dr Pepper', 'Dietní Pepsi', 'Dietní Mountain Dew', 
+        'Mountain Dew', 'Fenta Orange', 'Wanglaoji'
+    ],
+    'kapacita': [
+        1, 8, 5, 8, 5, 6, 6, 4, 8, 1, 9, 8, 7, 7, 4, 4
+    ],
+    'cena_v_korunach': [
+        4366.97, 14955.08, 7840.88, 14526.61, 13402.79, 
+        13971.55, 16204.19, 12492.11, 20714.05, 16908.67, 
+        17580.74, 19214.60, 10348.43, 9046.26, 11605.80
+    ]
+}
+
+df = pd.DataFrame(data)
+
+# Filter products with price higher than 15,225 CZK
+filtered_df = df[df['cena_v_korunach'] > 15225]
+
+# Prepare data for pie chart
+labels = filtered_df['jmeno_katalogoveho_zapisu']
+sizes = filtered_df['kapacita']
+
+# Plotting
+plt.figure(figsize=(10, 7))
+plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140)
+plt.title('Kapacita výrobků s cenou vyšší než 15 225 CZK')
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.show()
+```

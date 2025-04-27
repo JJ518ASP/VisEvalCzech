@@ -1,0 +1,32 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+region_data = {
+    'id_oblasti': [1, 2, 3, 4, 5],
+    'nazev_oblasti': ['Afghánistán', 'Albánie', 'Alžírsko', 'Americká Samoa', 'Andorra']
+}
+
+storm_data = {
+    'id_oblasti': [1, 1, 3, 4, 5, 2],
+    'id_boure': [1, 1, 3, 4, 5, 2]
+}
+
+# Vytvoření DataFrame
+regions_df = pd.DataFrame(region_data)
+storms_df = pd.DataFrame(storm_data)
+
+# Spojení dat
+merged_df = pd.merge(regions_df, storms_df, on='id_oblasti', how='left')
+
+# Počet bouří pro každý region
+storm_count = merged_df['nazev_oblasti'].value_counts()
+
+# Vykreslení koláčového grafu
+plt.figure(figsize=(10, 7))
+plt.pie(storm_count, labels=storm_count.index, autopct='%1.1f%%', startangle=140)
+plt.title('Počet bouří podle regionů')
+plt.axis('equal')  # Pro zachování poměru
+plt.show()
+```

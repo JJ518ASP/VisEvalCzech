@@ -1,0 +1,35 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data for the addresses
+data = {
+    'state_province_county': [
+        'Nevada', 'Colorado', 'Virginia', 'Oklahoma', 'District of Columbia', 
+        'Maryland', 'Louisiana', 'Oregon', 'Illinois', 'Kentucky', 
+        'Kentucky', 'Maine', 'Idaho', 'Vermont', 'SouthDakota'
+    ]
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Count addresses per state
+state_counts = df['state_province_county'].value_counts()
+
+# Sort in descending order
+state_counts = state_counts.sort_values(ascending=False)
+
+# Plotting
+plt.figure(figsize=(10, 6))
+state_counts.plot(kind='bar', color='skyblue')
+plt.title('Number of Addresses by State')
+plt.xlabel('State')
+plt.ylabel('Number of Addresses')
+plt.xticks(rotation=45)
+plt.grid(axis='y')
+
+# Show plot
+plt.tight_layout()
+plt.show()
+```

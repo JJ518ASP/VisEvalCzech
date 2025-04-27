@@ -1,0 +1,44 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data for Manufacturers
+manufacturers_data = {
+    'Code': [1, 2, 3, 4, 5, 6],
+    'Name': ['Sony', 'Creative Labs', 'Hewlett-Packard', 'Iomega', 'Fujitsu', 'Winchester'],
+    'Headquarter': ['Tokyo', 'Austin', 'Los Angeles', 'Beijing', 'Taiwan', 'Paris'],
+    'Founder': ['Andy', 'Owen', 'James', 'Mary', 'John', 'Robert'],
+    'Revenue': [120.0, 100.0, 50.0, 200.0, 130.0, 30.0]
+}
+
+# Data for Products
+products_data = {
+    'Code': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+    'Name': ['Hard drive', 'Memory', 'ZIP drive', 'Floppy disk', 'Monitor', 'DVD drive', 'CD drive', 'Printer', 'Toner cartridge', 'DVD burner', 'DVD drive'],
+    'Price': [240, 120, 150, 5, 240, 180, 90, 270, 66, 180, 150],
+    'Manufacturer': [5, 6, 4, 6, 1, 2, 2, 3, 3, 2, 3]
+}
+
+# Create DataFrames
+manufacturers_df = pd.DataFrame(manufacturers_data)
+products_df = pd.DataFrame(products_data)
+
+# Merge DataFrames on Manufacturer code
+merged_df = products_df.merge(manufacturers_df, left_on='Manufacturer', right_on='Code')
+
+# Group by Headquarter and sum Revenue
+headquarter_revenue = merged_df.groupby('Headquarter')['Revenue'].sum().reset_index()
+
+# Sort by Headquarter
+headquarter_revenue = headquarter_revenue.sort_values('Headquarter')
+
+# Plotting the bar chart
+plt.figure(figsize=(10, 6))
+plt.bar(headquarter_revenue['Headquarter'], headquarter_revenue['Revenue'], color='skyblue')
+plt.xlabel('Headquarter')
+plt.ylabel('Total Revenue')
+plt.title('Total Revenue by Headquarter')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+```

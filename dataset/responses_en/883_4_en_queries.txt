@@ -1,0 +1,43 @@
+To find the descriptions of the service types with product prices above 100, we will first join the relevant tables and filter the products based on the price condition. Then we will count the occurrences of each service type and visualize the results with a pie chart.
+
+Here is the Python code to achieve this:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+products_data = {
+    'Product_ID': [11, 154, 156, 179, 188, 21, 216, 232, 233, 250, 273, 300, 46, 81, 83],
+    'Product_Name': ['photo', 'film', 'film', 'film', 'film', 'photo', 'film', 'photo', 'photo', 'photo', 'photo', 'dinning', 'dinning', 'dinning', 'film'],
+    'Product_Price': [4448536, 2302, 17622723, 1432324, 49097627, 22082866, 157216, 22, 4082352, 797, 1577, 30625, 50828, 634660, 900]
+}
+
+services_data = {
+    'Service_ID': [191, 219, 220, 396, 414, 421, 525, 597, 630, 640, 662, 773, 779, 798, 840],
+    'Service_Type_Code': [1, 2, 1, 3, 2, 3, 4, 2, 4, 2, 2, 3, 1, 1, 1],
+    'Product_Name': ['film', 'film', 'dinning', 'photo', 'photo', 'photo', 'photo', 'photo', 'dinning', 'dinning', 'dinning', 'film', 'film', 'film', 'film']
+}
+
+# Create DataFrames
+products_df = pd.DataFrame(products_data)
+services_df = pd.DataFrame(services_data)
+
+# Filter products with price > 100
+filtered_products = products_df[products_df['Product_Price'] > 100]
+
+# Merge with services to find descriptions
+merged_data = pd.merge(services_df, filtered_products, on='Product_Name')
+
+# Count occurrences of each service type
+service_counts = merged_data['Service_Type_Code'].value_counts()
+
+# Create a pie chart
+plt.figure(figsize=(8, 6))
+plt.pie(service_counts, labels=service_counts.index, autopct='%1.1f%%', startangle=140)
+plt.title('Count of Service Types with Product Price Above 100')
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.show()
+``` 
+
+This code snippet will generate a pie chart showing the distribution of service types corresponding to products priced above 100. The service type codes will be displayed as labels on the pie chart.

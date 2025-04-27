@@ -1,0 +1,42 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+data = {
+    'datum_na_adresu': [
+        '15. 03. 2018', '02. 03. 2018', '25. 02. 2018', '23. 03. 2018',
+        '12. 03. 2018', '27. 02. 2018', '04. 03. 2018', '20. 03. 2018',
+        '05. 03. 2018', '04. 03. 2018', '12. 03. 2018', '06. 03. 2018',
+        '17. 03. 2018', '01. 03. 2018', '15. 03. 2018', '03. 03. 2018',
+        '18. 03. 2018', '04. 03. 2018', '13. 03. 2018'
+    ],
+    'dalsi_detaily': [
+        'dům', 'dům', 'byt', 'dům', 'byt', 'dům', 'dům', 'dům',
+        'byt', 'dům', 'dům', 'dům', 'byt', 'dům', 'byt', 'byt',
+        'první vyznamenání', 'první vyznamenání', 'první vyznamenání'
+    ]
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Convert datum_na_adresu to datetime
+df['datum_na_adresu'] = pd.to_datetime(df['datum_na_adresu'], format='%d. %m. %Y')
+
+# Extract month
+df['month'] = df['datum_na_adresu'].dt.month
+
+# Group by month and dalsi_detaily
+grouped = df.groupby(['month', 'dalsi_detaily']).size().unstack(fill_value=0)
+
+# Plot
+grouped.plot(kind='bar', stacked=True)
+plt.title('Rozložení datum_na_adresu podle měsíců a typu detailů')
+plt.xlabel('Měsíc')
+plt.ylabel('Počet adres')
+plt.xticks(rotation=0)
+plt.legend(title='Další detaily')
+plt.tight_layout()
+plt.show()
+```

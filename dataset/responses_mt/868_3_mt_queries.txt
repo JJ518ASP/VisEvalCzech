@@ -1,0 +1,59 @@
+Nejprve zjistíme potřebná data pro generování grafu. Budeme potřebovat ceny produktů, které jsou větší než 1000, a odpovídající počet objednávek.
+
+Na základě poskytnutých dat v souboru `Invoices.csv` a `Order_Items.csv` můžeme zjistit, kolik objednávek mělo celkovou cenu nad 1000. Poté vygenerujeme čárový graf.
+
+Zde je Python kód pro generování grafu:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+product_prices = {
+    396: 31862.0853,
+    191: 58932775.8822,
+    273: 1577,
+    300: 30625,
+    83: 900,
+    46: 50828,
+    11: 4448536,
+    154: 2302,
+    156: 17622723,
+    179: 1432324,
+    188: 49097627,
+    21: 22082866,
+    216: 157216,
+    232: 22,
+    233: 4082352,
+    250: 797,
+}
+
+# Objednávky
+order_items = {
+    1: [396, 396],  # Order ID 1 has 2 items with price 31862.0853
+    2: [300],       # Order ID 2 has 1 item with price 30625
+    3: [273],       # Order ID 3 has 1 item with price 1577
+    4: [191],       # Order ID 4 has 1 item with price 58932775.8822
+    5: [396],       # Order ID 5 has 1 item with price 31862.0853
+}
+
+# Calculate total price for each order
+order_totals = {order_id: sum(product_prices[item_id] for item_id in items) for order_id, items in order_items.items()}
+orders_above_1000 = {order_id: total for order_id, total in order_totals.items() if total > 1000}
+
+# Count orders above 1000
+count_above_1000 = len(orders_above_1000)
+
+# Prepare data for the line chart
+data = [count_above_1000]
+labels = ['Orders with Total Price > 1000']
+
+# Generate the line chart
+plt.figure(figsize=(10, 6))
+plt.plot(labels, data, marker='o')
+plt.title('Count of Orders with Total Price Above 1000')
+plt.xlabel('Order Price Range')
+plt.ylabel('Count of Orders')
+plt.grid()
+plt.show()
+```

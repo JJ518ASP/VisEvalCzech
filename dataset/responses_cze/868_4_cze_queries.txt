@@ -1,0 +1,29 @@
+Nejprve je třeba zjistit, kolik objednávek má cenu vyšší než 21 750. Následně vytvoříme čárový graf, který zobrazí počet těchto objednávek.
+
+Zde jsou potřebná data pro generování grafu:
+
+- Ceny objednávek: [96 755 658, 50 069, 383 294 226, 31 153 047, 1 067 873 388, 480 302 336, 3 419 448, 479, 88 791 156, 17 335, 34 300, 666 094, 1 105 509, 13 803 855, 19 575]
+- Počet objednávek s cenou vyšší než 21 750: 12
+
+Nyní vytvoříme čárový graf:
+
+```python
+import matplotlib.pyplot as plt
+
+# Data
+ceny = [96755658, 50069, 383294226, 31153047, 1067873388, 480302336, 3419448, 479, 88791156, 17335, 34300, 666094, 1105509, 13803855, 19575]
+pocet_objednavek_vyssi = sum(1 for cena in ceny if cena > 21750)
+
+# Počty objednávek
+data = [pocet_objednavek_vyssi]
+
+# Vytvoření čárového grafu
+plt.figure(figsize=(10, 5))
+plt.plot(data, marker='o')
+plt.title('Počet objednávek s cenou vyšší než 21 750')
+plt.xlabel('Index')
+plt.ylabel('Počet objednávek')
+plt.xticks([0], ['Objednávky'])
+plt.grid()
+plt.show()
+```

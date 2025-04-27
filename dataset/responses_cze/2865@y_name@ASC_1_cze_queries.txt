@@ -1,0 +1,39 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+storm_data = {
+    'id_boure': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    'Nazev': ['Jeden', 'Dva', 'Tři', 'Čtyři', 'Pět', 'Šest', 'Sedm', 'Osm', 'Devět', '9 cyklónů']
+}
+
+affected_region_data = {
+    'id_oblasti': [1, 2, 3, 1, 12, 2],
+    'id_boure': [1, 1, 3, 4, 5, 5],
+    'cislo_postizeneho_mesta': ["10,0", "15,0", "30,0", "22,0", "37,0", "12,0"]
+}
+
+# Create DataFrames
+storms_df = pd.DataFrame(storm_data)
+affected_regions_df = pd.DataFrame(affected_region_data)
+
+# Count affected regions per storm
+affected_counts = affected_regions_df.groupby('id_boure').size().reset_index(name='count')
+
+# Merge with storm names
+merged_df = pd.merge(affected_counts, storms_df, on='id_boure')
+
+# Sort by count
+sorted_df = merged_df.sort_values(by='count')
+
+# Plotting
+plt.figure(figsize=(10, 6))
+plt.bar(sorted_df['Nazev'], sorted_df['count'], color='skyblue')
+plt.xlabel('Název bouře')
+plt.ylabel('Počet zasažených oblastí')
+plt.title('Počet zasažených oblastí pro každou bouři')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+```

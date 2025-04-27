@@ -1,0 +1,48 @@
+Nejprve zjistíme potřebná data pro objednávky s cenou nad 21 750. Použijeme informace z tabulek `Orders`, `Invoice_Items`, a `Products`. Poté vygenerujeme čárový graf.
+
+Zde jsou potřebná data pro graf:
+
+- Ceny produktů:
+  - ID_produktu 396: 693 000
+  - ID_produktu 191: 1 281 787 875
+  - ID_produktu 191: 1 281 787 875
+  - ID_produktu 779: 198 593
+  - ID_produktu 83: 19 575
+  - atd.
+
+- Počet objednávek nad 21 750.
+
+Následující Python kód generuje čárový graf s počtem objednávek nad 21 750:
+
+```python
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Data
+data = {
+    'Nazev_produktu': ['foto', 'film', 'film', 'film', 'film', 'stolování', 'stolování', 'stolování'],
+    'Cena_produktu': [693000, 1281787875, 198593, 198593, 198593, 1105509, 13803855, 198593],
+    'Pocet_objednavek': [1, 1, 1, 1, 1, 1, 1, 1]  # Počet objednávek pro každý produkt
+}
+
+df = pd.DataFrame(data)
+
+# Filtrujeme data pro ceny nad 21750
+filtered_df = df[df['Cena_produktu'] > 21750]
+
+# Sčítáme objednávky podle názvu produktu
+order_counts = filtered_df.groupby('Nazev_produktu')['Pocet_objednavek'].sum()
+
+# Vykreslení grafu
+plt.figure(figsize=(10, 5))
+plt.plot(order_counts.index, order_counts.values, marker='o')
+plt.title('Počet objednávek s cenou nad 21 750')
+plt.xlabel('Název produktu')
+plt.ylabel('Počet objednávek')
+plt.xticks(rotation=45)
+plt.grid()
+plt.tight_layout()
+plt.show()
+```
+
+Tento kód vytvoří čárový graf, který zobrazuje počet objednávek pro produkty s cenou nad 21 750.

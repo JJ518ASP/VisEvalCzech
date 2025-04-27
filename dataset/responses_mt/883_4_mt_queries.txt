@@ -1,0 +1,31 @@
+Nejprve je potřeba vybrat služby, jejichž cena produktu je větší než 100. Poté spočítáme četnost jednotlivých typů služeb a zobrazíme je pomocí koláčového grafu.
+
+Zde jsou příslušné informace pro generování grafu:
+
+- Typy služeb a jejich ceny:
+  - poskytovat fotografické služby (cena: 31862.0853)
+  - poskytovat filmovací služby (cena: 9130.7326)
+  - poskytovat stravovací služby (cena: 2704.4719)
+  - poskytovat služby na podporu reklamy (cena: 187358.6469)
+
+Zde je kód pro generování koláčového grafu:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+service_types = ['poskytovat fotografické služby', 'poskytovat filmovací služby', 
+                 'poskytovat stravovací služby', 'poskytovat služby na podporu reklamy']
+service_prices = [31862.0853, 9130.7326, 2704.4719, 187358.6469]
+
+# Vytvoření DataFrame
+df = pd.DataFrame({'Service_Type': service_types, 'Price': service_prices})
+
+# Vytvoření koláčového grafu
+plt.figure(figsize=(8, 8))
+plt.pie(df['Price'], labels=df['Service_Type'], autopct='%1.1f%%', startangle=90)
+plt.title('Podíl typů služeb s cenou produktu nad 100')
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.show()
+```

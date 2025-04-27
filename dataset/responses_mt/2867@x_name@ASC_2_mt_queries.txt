@@ -1,0 +1,46 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+affected_region_data = {
+    'Region_id': [1, 2, 3, 1, 12, 2],
+    'Storm_ID': [1, 1, 3, 4, 5, 5],
+    'Number_city_affected': [10.0, 15.0, 30.0, 22.0, 37.0, 12.0]
+}
+
+region_data = {
+    'Region_id': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+    'Region_code': ['AF', 'AL', 'DZ', 'DS', 'AD', 'AO', 'AI', 'AQ', 'AG', 'CY', 'CZ', 'DK', 'DJ'],
+    'Název_oblasti': ['Afghánistán', 'Albánie', 'Alžírsko', 'Americká Samoa', 'Andorra', 
+                     'Angola', 'Anguilla', 'Antarktida', 'Antigua a Barbuda', 
+                     'Kypr', 'Česká republika', 'Dánsko', 'Džibutsko']
+}
+
+# Vytvoření DataFrame
+affected_region_df = pd.DataFrame(affected_region_data)
+region_df = pd.DataFrame(region_data)
+
+# Spojení dat
+merged_df = pd.merge(affected_region_df, region_df, on='Region_id')
+
+# Počet bouří v jednotlivých regionech
+storm_count = merged_df['Storm_ID'].value_counts().reset_index()
+storm_count.columns = ['Storm_ID', 'Count']
+
+# Přidání názvů oblastí
+storm_count = storm_count.merge(merged_df[['Storm_ID', 'Název_oblasti']], on='Storm_ID', how='left').drop_duplicates()
+
+# Seřazení podle názvů oblastí
+storm_count_sorted = storm_count.sort_values(by='Název_oblasti')
+
+# Vykreslení grafu
+plt.figure(figsize=(10, 6))
+plt.bar(storm_count_sorted['Název_oblasti'], storm_count_sorted['Count'], color='skyblue')
+plt.title('Počet bouří v jednotlivých regionech')
+plt.xlabel('Název oblasti')
+plt.ylabel('Počet bouří')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+```

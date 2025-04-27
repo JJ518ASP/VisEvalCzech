@@ -1,0 +1,51 @@
+Nejprve shromáždíme potřebná data a poté vytvoříme sloupcový graf. Budeme potřebovat zakladatele, příjmy a informace o výrobcích.
+
+Data pro generování grafu:
+
+- Zakladatelé: Andy, Owen, James, Mary, John, Robert
+- Příjmy: 120.0, 100.0, 50.0, 200.0, 130.0, 30.0
+
+Nyní přejdeme k vizualizaci dat pomocí Pythonu a knihovny Matplotlib:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data pro výrobce
+manufacturers_data = {
+    'Zakladatel': ['Andy', 'Owen', 'James', 'Mary', 'John', 'Robert'],
+    'Příjmy': [120.0, 100.0, 50.0, 200.0, 130.0, 30.0]
+}
+
+# Data pro produkty
+products_data = {
+    'Kód': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+    'Název': ['Pevný disk', 'Paměť', 'Jednotka ZIP', 'Disketa', 'Monitor', 
+              'Jednotka DVD', 'Jednotka CD', 'Tiskárna', 'Tonerová kazeta', 
+              'Vypalovačka DVD', 'Jednotka DVD'],
+    'Cena': [240, 120, 150, 5, 240, 180, 90, 270, 66, 180, 150],
+    'Výrobce': [5, 6, 4, 6, 1, 2, 2, 3, 3, 2, 3]
+}
+
+# Vytvoření DataFrame
+manufacturers_df = pd.DataFrame(manufacturers_data)
+products_df = pd.DataFrame(products_data)
+
+# Připojení dat na základě výrobce
+merged_df = pd.merge(products_df, manufacturers_df, left_on='Výrobce', right_index=True)
+
+# Seskupení podle zakladatele a výpočet průměrného příjmu
+grouped_df = merged_df.groupby('Zakladatel')['Příjmy'].mean().reset_index()
+
+# Seřazení podle průměrného příjmu vzestupně
+grouped_df = grouped_df.sort_values(by='Příjmy')
+
+# Vytvoření sloupcového grafu
+plt.bar(grouped_df['Zakladatel'], grouped_df['Příjmy'], color='skyblue')
+plt.xlabel('Zakladatel')
+plt.ylabel('Průměrné příjmy')
+plt.title('Průměrné příjmy podle zakladatele')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+```

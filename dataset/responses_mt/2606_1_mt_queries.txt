@@ -1,0 +1,20 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data pro výrobky s cenou vyšší než 700 USD
+data = {
+    'product_name': ['Kořenové pivo', 'Zázvorové pivo', 'Vimto', 'Sprite Lemo', 'Dietní Pepsi', 'Dietní limonáda Mountain Dew'],
+    'capacity': [8, 5, 6, 8, 9, 8]
+}
+
+# Vytvoření DataFrame
+df = pd.DataFrame(data)
+
+# Vytvoření koláčového grafu
+plt.figure(figsize=(8, 6))
+plt.pie(df['capacity'], labels=df['product_name'], autopct='%1.1f%%', startangle=140)
+plt.title('Kapacita výrobků s cenou vyšší než 700 USD')
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.show()
+```

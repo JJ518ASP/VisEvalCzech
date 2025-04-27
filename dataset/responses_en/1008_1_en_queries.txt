@@ -1,0 +1,35 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+data = {
+    'product_id': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    'product_type_code': ['Hardware', 'Clothes', 'Hardware', 'Hardware', 'Clothes', 
+                          'Hardware', 'Hardware', 'Hardware', 'Clothes', 'Hardware', 
+                          'Clothes', 'Clothes', 'Clothes', 'Hardware', 'Clothes'],
+    'product_name': ['Apple', 'jcrew', 'Apple', 'Apple', 'jcrew', 
+                     'Apple', 'Apple', 'Sony', 'jcrew', 'Sony', 
+                     'jcrew', 'gucci', 'gucci', 'Sony', 'gucci'],
+    'product_price': [54753982.574522, 30590929.528306, 10268.85297069, 22956668.699482, 
+                      5927021.8748021, 77.109961147471, 450.39232520498, 4446237.9177554, 
+                      622.79275984494, 7171.5933353284, 149.95519076938, 593.80519929985, 
+                      11388.26282462, 389.91542644329, 310488248.48788]
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Filter products with price > 1000 or < 500
+filtered_df = df[(df['product_price'] > 1000) | (df['product_price'] < 500)]
+
+# Count products by name
+product_counts = filtered_df['product_name'].value_counts()
+
+# Plotting pie chart
+plt.figure(figsize=(10, 7))
+plt.pie(product_counts, labels=product_counts.index, autopct='%1.1f%%', startangle=140)
+plt.title('Number of Products with Price > 1000 or < 500 by Product Name')
+plt.axis('equal')  # Equal aspect ratio ensures that pie chart is a circle.
+plt.show()
+```

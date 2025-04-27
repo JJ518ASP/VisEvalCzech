@@ -1,0 +1,48 @@
+Nejprve zjistíme potřebná data, abychom mohli vytvořit sloupcový graf. Využijeme data ze souboru `Student_Addresses.csv`, konkrétně atributy `date_address_to` a `other_details`.
+
+Následující Python kód generuje požadovaný graf:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Vytvoření DataFrame z dat
+data = {
+    'date_address_to': [
+        '2018-03-15 10:37:19', '2018-03-02 00:19:57', '2018-02-25 05:21:34',
+        '2018-03-23 09:52:56', '2018-03-12 17:21:24', '2018-02-27 04:45:57',
+        '2018-03-04 17:04:35', '2018-03-20 09:02:48', '2018-03-22 17:56:20',
+        '2018-03-04 06:51:19', '2018-03-04 06:05:45', '2018-03-14 09:12:05',
+        '2018-03-06 21:41:20', '2018-03-07 04:29:28', '2018-03-12 02:57:48',
+        '2018-03-04 13:24:28', '2018-03-15 04:44:58', '2018-03-05 21:12:37',
+        '2018-03-14 17:00:44', '2018-03-18 03:28:47'
+    ],
+    'other_details': [
+        'dům', 'dům', 'apartmán', 'dům', 'apartmán', 'dům',
+        'dům', 'dům', 'dům', 'dům', 'dům', 'apartmán',
+        'dům', 'dům', 'dům', 'apartmán', 'apartmán', 'apartmán',
+        'apartmán', 'dům'
+    ]
+}
+
+df = pd.DataFrame(data)
+
+# Převeďte sloupec na datetime a extrakci měsíce
+df['date_address_to'] = pd.to_datetime(df['date_address_to'])
+df['month'] = df['date_address_to'].dt.to_period('M')
+
+# Seskupení podle měsíce a ostatních detailů
+grouped = df.groupby(['month', 'other_details']).size().unstack(fill_value=0)
+
+# Vykreslení grafu
+grouped.plot(kind='bar', stacked=True)
+plt.title('Rozložení date_address_to podle ostatních detailů')
+plt.xlabel('Měsíc')
+plt.ylabel('Počet adres')
+plt.xticks(rotation=45)
+plt.legend(title='Ostatní detaily')
+plt.tight_layout()
+plt.show()
+```
+
+Tento kód vytvoří sloupcový graf, který ukazuje rozložení počtu adres podle měsíců a atributu `other_details`. Každý sloupec odpovídá měsí

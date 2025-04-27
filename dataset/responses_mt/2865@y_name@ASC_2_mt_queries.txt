@@ -1,0 +1,32 @@
+Zde je Python kód, který vygeneruje sloupcový graf ukazující, kolik regionů bylo zasaženo každou bouří, a seřadí seznam podle osy y vzestupně.
+
+```python
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Data
+storm_ids = [1, 2, 3, 4, 5]
+affected_regions_count = [2, 1, 1, 1, 2]  # počty regionů zasažených každou bouří
+
+# Vytvoření DataFrame
+data = pd.DataFrame({
+    'Storm_ID': storm_ids,
+    'Affected_Regions_Count': affected_regions_count
+})
+
+# Seřazení podle počtu zasažených regionů
+data_sorted = data.sort_values(by='Affected_Regions_Count')
+
+# Vytvoření sloupcového grafu
+plt.bar(data_sorted['Storm_ID'].astype(str), data_sorted['Affected_Regions_Count'], color='skyblue')
+plt.xlabel('Storm ID')
+plt.ylabel('Number of Affected Regions')
+plt.title('Number of Regions Affected by Each Storm')
+plt.xticks(rotation=45)
+plt.grid(axis='y')
+
+# Zobrazení grafu
+plt.show()
+``` 
+
+Tento kód vytvoří sloupcový graf, který zobrazuje počet zasažených regionů pro každou bouři, seřazený v rostoucím pořadí podle počtu zasažených regionů.

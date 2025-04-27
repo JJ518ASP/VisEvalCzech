@@ -1,0 +1,2 @@
+from generate_from_queries_final import run_pipeline
+run_pipeline(prompt_type="cze_queries")

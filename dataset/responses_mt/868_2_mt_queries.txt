@@ -1,0 +1,32 @@
+Data objednávek s cenou vyšší než 1000:
+
+- Služby s cenou vyšší než 1000:
+  - Product_ID: 191, Product_Name: film, Product_Price: 58932775.8822
+  - Product_ID: 396, Product_Name: foto, Product_Price: 31862.0853
+  - Product_ID: 779, Product_Name: film, Product_Price: 9130.7326
+  - Product_ID: 798, Product_Name: film, Product_Price: 84063402.4351
+  - Product_ID: 660, Product_Name: stolování, Product_Price: 641544.2835
+
+Data pro graf:
+- Product_ID: [191, 396, 779, 798]
+- Product_Price: [58932775.8822, 31862.0853, 9130.7326, 84063402.4351]
+
+Python kód pro generování čárového grafu:
+
+```python
+import matplotlib.pyplot as plt
+
+# Data
+product_ids = [191, 396, 779, 798]
+product_prices = [58932775.8822, 31862.0853, 9130.7326, 84063402.4351]
+
+# Vytvoření čárového grafu
+plt.figure(figsize=(10, 5))
+plt.plot(product_ids, product_prices, marker='o')
+plt.title('Ceny objednávek vyšší než 1000')
+plt.xlabel('Product ID')
+plt.ylabel('Product Price')
+plt.xticks(product_ids)
+plt.grid()
+plt.show()
+```

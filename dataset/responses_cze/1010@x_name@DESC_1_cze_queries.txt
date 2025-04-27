@@ -1,0 +1,37 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+data = {
+    'kraj': [
+        'Zlínský kraj', 'Plzeňský kraj', 'Jihočeský kraj', 
+        'Středočeský kraj', 'Plzeňský kraj', 'Olomoucký kraj', 
+        'hl. m. Praha', 'hl. m. Praha', 'Jihomoravský kraj', 
+        'Pardubický kraj', 'Moravskoslezský kraj', 'Královéhradecký kraj', 
+        'Kraj Vysočina', 'Zlínský kraj', 'Plzeňský kraj'
+    ]
+}
+
+# Vytvoření DataFrame
+df = pd.DataFrame(data)
+
+# Počítání počtu adres v jednotlivých krajích
+count_by_region = df['kraj'].value_counts()
+
+# Seřazení výsledků sestupně
+count_by_region_sorted = count_by_region.sort_values(ascending=False)
+
+# Vytvoření sloupcového grafu
+plt.figure(figsize=(10, 6))
+count_by_region_sorted.plot(kind='bar', color='skyblue')
+plt.title('Počet adres v jednotlivých krajích')
+plt.xlabel('Kraj')
+plt.ylabel('Počet adres')
+plt.xticks(rotation=45)
+plt.grid(axis='y')
+
+# Zobrazení grafu
+plt.tight_layout()
+plt.show()
+```

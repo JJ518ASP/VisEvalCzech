@@ -1,0 +1,37 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data from affected_region.csv
+affected_data = {
+    'id_oblasti': [1, 2, 3, 1, 12, 2],
+    'id_boure': [1, 1, 3, 4, 5, 5],
+    'cislo_postizeneho_mesta': ["10,0", "15,0", "30,0", "22,0", "37,0", "12,0"]
+}
+
+# Data from region.csv
+region_data = {
+    'id_oblasti': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+    'kod_oblasti': ['AF', 'AL', 'DZ', 'DS', 'AD', 'AO', 'AI', 'AQ', 'AG', 'CY', 'CZ', 'DK', 'DJ'],
+    'nazev_oblasti': ['Afghánistán', 'Albánie', 'Alžírsko', 'Americká Samoa', 'Andorra', 
+                     'Angola', 'Anguilla', 'Antarktida', 'Antigua a Barbuda', 'Kypr', 
+                     'Česká republika', 'Dánsko', 'Džibutsko']
+}
+
+# Data from storm.csv
+storm_data = {
+    'id_boure': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    'Nazev': ['Jeden', 'Dva', 'Tři', 'Čtyři', 'Pět', 'Šest', 'Sedm', 'Osm', 'Devět', '9 cyklónů'],
+    'Data_aktivity': ['19. května - 25. května', '3. srpna - 10. srpna', '5. srpna - 14. srpna', 
+                      '26. srpna - 2. září', '7. září - 17. září', '18. září-25. září', 
+                      '22. září - 28. září', '20. října - 24. října', '24. října-26. října', 
+                      '19. května - 26. října'],
+    'Nejvyssi_rychlost': [995, 972, 972, 961, 988, 1002, 977, 983, 1007, 961],
+    'Skoda_miliony_CZK': ["282,75", "233,81", "282,75", "88,09", "32,41", "0,85", 
+                          "282,75", "282,75", "282,75", "637,275"],
+    'Pocet_umrti': [0, 7, 52, 7, 3, 2, 0, 0, 0, 71]
+}
+
+# Create DataFrames
+affected_df = pd.DataFrame(affected_data)
+region_df = pd.DataFrame(region_data

@@ -1,0 +1,43 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+manufacturers_data = {
+    'Kód': [1, 2, 3, 4, 5, 6],
+    'Název': ['Sony', 'Kreativní laboratoře', 'Hewlett-Packard', 'Iomega', 'Fujitsu', 'Winchester'],
+    'Sídlo': ['Tokio', 'Austin', 'Los Angeles', 'Peking', 'Tchaj-wan', 'Paris'],
+    'Zakladatel': ['Andy', 'Owen', 'James', 'Mary', 'John', 'Robert'],
+    'Příjmy': [120.0, 100.0, 50.0, 200.0, 130.0, 30.0]
+}
+
+products_data = {
+    'Kód': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+    'Název': ['Pevný disk', 'Paměť', 'Jednotka ZIP', 'Disketa', 'Monitor', 'Jednotka DVD', 'Jednotka CD', 'Tiskárna', 'Tonerová kazeta', 'Vypalovačka DVD', 'Jednotka DVD'],
+    'Cena': [240, 120, 150, 5, 240, 180, 90, 270, 66, 180, 150],
+    'Výrobce': [5, 6, 4, 6, 1, 2, 2, 3, 3, 2, 3]
+}
+
+# Create DataFrames
+manufacturers_df = pd.DataFrame(manufacturers_data)
+products_df = pd.DataFrame(products_data)
+
+# Merge DataFrames
+merged_df = pd.merge(products_df, manufacturers_df, left_on='Výrobce', right_on='Kód')
+
+# Calculate average revenue by founder
+average_revenue = merged_df.groupby('Zakladatel')['Příjmy'].mean().reset_index()
+
+# Sort by average revenue ascending
+average_revenue = average_revenue.sort_values(by='Příjmy')
+
+# Plotting
+plt.figure(figsize=(10, 6))
+plt.bar(average_revenue['Zakladatel'], average_revenue['Příjmy'], color='skyblue')
+plt.xlabel('Zakladatel')
+plt.ylabel('Průměrné Příjmy')
+plt.title('Průměrné Příjmy podle Zakladatele')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+```

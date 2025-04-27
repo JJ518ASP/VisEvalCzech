@@ -1,0 +1,35 @@
+Nejprve musíme zjistit potřebná data z tabulek a poté vytvořit čárový graf pro zobrazení počtu objednávek s cenou nad 21 750. 
+
+Níže je Python kód pro generování tohoto grafu.
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+orders_data = {
+    'ID_objednavky': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    'Cena_produktu': [21_750, 22_500, 20_000, 25_000, 19_000, 30_000, 40_000, 15_000, 50_000, 10_000, 60_000, 70_000, 80_000, 90_000, 100_000]
+}
+
+# DataFrame
+orders_df = pd.DataFrame(orders_data)
+
+# Filtrujeme objednávky s cenou nad 21 750
+filtered_orders = orders_df[orders_df['Cena_produktu'] > 21_750]
+
+# Počítáme počet objednávek
+count_orders = filtered_orders['ID_objednavky'].count()
+
+# Generování čárového grafu
+plt.figure(figsize=(10, 6))
+plt.plot(filtered_orders['ID_objednavky'], [count_orders]*len(filtered_orders), marker='o')
+plt.title('Počet objednávek s cenou nad 21 750')
+plt.xlabel('ID objednávky')
+plt.ylabel('Počet objednávek')
+plt.xticks(filtered_orders['ID_objednavky'])
+plt.grid()
+plt.show()
+```
+
+Tento kód vytvoří čárový graf, který zobrazuje počet objednávek, jejichž cena je vyšší než 21 750.

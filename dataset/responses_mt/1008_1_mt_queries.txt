@@ -1,0 +1,54 @@
+Nejprve je třeba zjistit, kolik produktů splňuje dané podmínky pro každý název produktu. Zde jsou data, která použijeme pro generování grafu:
+
+- Produktové názvy a jejich ceny:
+  - Apple: 54753982.574522
+  - jcrew: 30590929.528306
+  - Apple: 10268.85297069
+  - Apple: 22956668.699482
+  - jcrew: 5927021.8748021
+  - Apple: 77.109961147471
+  - Apple: 450.39232520498
+  - Sony: 4446237.9177554
+  - jcrew: 622.79275984494
+  - Sony: 7171.5933353284
+  - jcrew: 149.95519076938
+  - gucci: 593.80519929985
+  - gucci: 11388.26282462
+  - Sony: 389.91542644329
+  - gucci: 310488248.48788
+
+Na základě těchto informací budeme počítat produkty s cenou vyšší než 1000 nebo nižší než 500.
+
+Zde je Python kód pro generování koláčového grafu:
+
+```python
+import matplotlib.pyplot as plt
+
+# Data
+product_names = ['Apple', 'jcrew', 'Apple', 'Apple', 'jcrew', 'Apple', 'Apple', 
+                 'Sony', 'jcrew', 'Sony', 'jcrew', 'gucci', 'gucci', 'Sony', 'gucci']
+product_prices = [54753982.574522, 30590929.528306, 10268.85297069, 22956668.699482, 
+                  5927021.8748021, 77.109961147471, 450.39232520498, 4446237.9177554, 
+                  622.79275984494, 7171.5933353284, 149.95519076938, 593.80519929985, 
+                  11388.26282462, 389.91542644329, 310488248.48788]
+
+# Count products with price > 1000 or < 500
+count = {}
+for name, price in zip(product_names, product_prices):
+    if price > 1000 or price < 500:
+        if name in count:
+            count[name] += 1
+        else:
+            count[name] = 1
+
+# Prepare data for pie chart
+labels = count.keys()
+sizes = count.values()
+
+# Plot pie chart
+plt.figure(figsize=(8, 8))
+plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140)
+plt.title('Počet produktů s cenou vyšší než 1000 nebo nižší než 500')
+plt.axis('equal')  # Equal aspect ratio ensures that pie chart is circular.
+plt.show()
+```

@@ -1,0 +1,16 @@
+id_zakaznika,kod_moznosti_platby,cislo_zakaznika,nazev_zakaznika,adresa_zakaznika,telefon_zakaznika,email_zakaznika
+1,Kreditní karta,456,Kayley,Hlavní tř. Kovářská 156/12,130 00,+87(9)5279161988,antonette73@example.com
+2,Kreditní karta,553,Sterling,Nové sady Vlkova 89,602 00,896.685.8228x2786,stroman.chadd@example.net
+3,Kreditní karta,951,Buford,Nádražní 45 č.p. 329,708 00,(192)144-4687,pattie.mayer@example.net
+4,Přímé inkaso,497,Caterina,Smetanova 1124/7,312 00,387.053.1225,dbeahan@example.net
+5,Přímé inkaso,752,Raymond,Lesní 987 č.p. 12,460 01,1-513-427-0125,bergnaum.ashton@example.com
+6,Přímé inkaso,838,Cheyenne,Masarykovo nám. 55/3,779 00,009-136-4509x19635,rhayes@example.org
+7,Přímé inkaso,429,Cecelia,Husova 2041,400 03,672-559-0630x7875,caesar.lemke@example.net
+8,Kreditní karta,564,Brenna,Dlouhá 77 č.p. 41,370 01,1-271-345-4681x1131,macy.huel@example.org
+9,Kreditní karta,525,Lela,Krátká 302/15,500 02,838.718.8618x23239,vandervort.helena@example.org
+10,Kreditní karta,795,Cleo,Školní 666 č.p. 9,530 02,1-202-928-5395,xrosenbaum@example.org
+11,Přímé inkaso,233,Shany,Rybniční 1234/4,760 01,936.929.9929,kling.jesus@example.com
+12,Kreditní karta,586,Madaline,Na Vršku 55,736 01,097-514-4641,brady.ernser@example.net
+13,Přímé inkaso,445,Melissa,U Hřiště 88 č.p. 17,272 04,529.148.1926,howard27@example.com
+14,Přímé inkaso,735,Orion,Vysočanská 204/11,434 01,479-171-6355x66065,kip.abernathy@example.com
+15,Přímé inkaso,523,Ottilie,Pod Horou 33 č.p. 156,747 06,393-750-2077x72779,morton06@example.net

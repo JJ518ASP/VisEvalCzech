@@ -1,0 +1,47 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Define the data
+data = {
+    'date_address_to': [
+        '2018-03-15 10:37:19', '2018-03-02 00:19:57', '2018-02-25 05:21:34', 
+        '2018-03-23 09:52:56', '2018-03-12 17:21:24', '2018-02-27 04:45:57', 
+        '2018-03-04 17:04:35', '2018-03-20 09:02:48', '2018-03-22 17:56:20', 
+        '2018-03-04 06:51:19', '2018-03-04 06:05:45', '2018-03-14 09:12:05', 
+        '2018-03-06 21:41:20', '2018-03-07 04:29:28', '2018-03-12 02:57:48', 
+        '2018-03-04 13:24:28', '2018-03-15 04:44:58', '2018-03-05 21:12:37', 
+        '2018-03-14 17:00:44', '2018-03-18 03:28:47'
+    ],
+    'monthly_rental': [
+        826.4319, 1113.0996, 1297.3186, 894.0958, 1297.807, 747.5312, 
+        756.6745, 1287.5604, 1067.8383, 1132.742, 683.0735, 1036.8462, 
+        800.1214, 865.2615, 679.2988, 644.9306, 1032.8717, 1032.9782, 
+        1007.2597, 620.2801
+    ],
+    'other_details': [
+        'house', 'house', 'apartment', 'house', 'apartment', 'house', 
+        'house', 'house', 'house', 'house', 'house', 'apartment', 
+        'house', 'house', 'house', 'apartment', 'apartment', 'apartment', 
+        'apartment', 'house'
+    ]
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Convert date_address_to to datetime
+df['date_address_to'] = pd.to_datetime(df['date_address_to'])
+
+# Bin the date_address_to by weekday
+df['weekday'] = df['date_address_to'].dt.day_name()
+
+# Group by other_details and weekday, then sum the monthly_rental
+result = df.groupby(['other_details', 'weekday']).agg({'monthly_rental': 'sum'}).reset_index()
+
+# Pivot the data for better visualization
+pivot_result = result.pivot(index='weekday', columns='other_details', values='monthly_rental').fillna(0)
+
+# Plotting
+pivot_result.plot(kind='bar', stacked=True)
+plt.title

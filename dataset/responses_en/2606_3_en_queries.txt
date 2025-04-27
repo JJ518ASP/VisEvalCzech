@@ -1,0 +1,35 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data for Catalog_Contents
+catalog_contents_data = {
+    'catalog_entry_id': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    'catalog_entry_name': ['Cola', 'Root beer', 'Cream Soda', 'Carbonated Water', 'Ginger Beer', 
+                           'Tizer', 'Vimto', 'Ramune', 'Sprite Lemo', 'Dr Pepper', 
+                           'Diet Pepsi', 'Diet Mountain Dew', 'Mountain Dew', 'Fenta Orange', 'Wanglaoji'],
+    'price_in_dollars': [200.78, 687.59, 360.5, 667.89, 616.22, 
+                         642.37, 745.02, 574.35, 952.37, 777.41, 
+                         808.31, 883.43, 475.79, 415.92, 533.6],
+    'capacity': [1, 8, 5, 8, 5, 
+                 6, 6, 4, 8, 1, 
+                 9, 8, 7, 7, 4]
+}
+
+# Create DataFrame
+df_catalog_contents = pd.DataFrame(catalog_contents_data)
+
+# Filter contents with price above 700 dollars
+filtered_contents = df_catalog_contents[df_catalog_contents['price_in_dollars'] > 700]
+
+# Prepare data for pie chart
+labels = filtered_contents['catalog_entry_name']
+sizes = filtered_contents['capacity']
+
+# Plotting the pie chart
+plt.figure(figsize=(8, 8))
+plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140)
+plt.title('Catalog Entry Capacities for Contents Above $700')
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.show()
+```

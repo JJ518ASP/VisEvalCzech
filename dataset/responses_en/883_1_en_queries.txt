@@ -1,0 +1,43 @@
+To create a pie chart showing the descriptions of service types that cost more than 100, we will first filter the services based on their price and then count the occurrences of each service type. Below is the Python code to achieve this:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data for services and product prices
+services_data = {
+    'Service_ID': [191, 219, 220, 396, 414, 421, 525, 597, 630, 640, 662, 773, 779, 798, 840],
+    'Service_Type_Code': [1, 2, 1, 3, 2, 3, 4, 2, 4, 2, 2, 3, 1, 1, 1],
+    'Product_Price': [58932775.8822, 2704.4719, 6888.8306, 31862.0853, 213.9459, 
+                      8004.988, 3499362.8145, 5396.2935, 19845767.8923, 
+                      7299.6747, 641544.2835, 827055.7309, 9130.7326, 
+                      84063402.4351, 187358.6469]
+}
+
+service_types_data = {
+    'Service_Type_Code': [1, 2, 3],
+    'Service_Type_Description': ['provide photo service', 'provide dinning service', 'provide filming service']
+}
+
+# Creating DataFrames
+services_df = pd.DataFrame(services_data)
+service_types_df = pd.DataFrame(service_types_data)
+
+# Filtering services that cost more than 100
+filtered_services = services_df[services_df['Product_Price'] > 100]
+
+# Merging to get service type descriptions
+merged = pd.merge(filtered_services, service_types_df, on='Service_Type_Code')
+
+# Counting occurrences of each service type description
+service_count = merged['Service_Type_Description'].value_counts()
+
+# Plotting pie chart
+plt.figure(figsize=(8, 8))
+plt.pie(service_count, labels=service_count.index, autopct='%1.1f%%', startangle=90)
+plt.title('Service Type Descriptions for Services Costing More Than 100')
+plt.axis('equal')  # Equal aspect ratio ensures that pie chart is circular.
+plt.show()
+``` 
+
+This code will generate a pie chart displaying the proportions of each service type description for services that cost more than 100.

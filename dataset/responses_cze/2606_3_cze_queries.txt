@@ -1,0 +1,26 @@
+Nejprve zjistíme, které položky z katalogu mají cenu vyšší než 15 225 korun. Následně vygenerujeme koláčový graf se jmény položek a jejich kapacitami.
+
+Data potřebná pro graf:
+- Položky s cenou vyšší než 15 225 korun:
+  - Zázvorové pivo, kapacita: 5
+  - Vimto, kapacita: 6
+  - Dietní Pepsi, kapacita: 9
+  - Sprite Lemo, kapacita: 8
+  - Dr Pepper, kapacita: 1
+
+Zde je Python kód pro generování koláčového grafu:
+
+```python
+import matplotlib.pyplot as plt
+
+# Data
+nazvy = ['Zázvorové pivo', 'Vimto', 'Dietní Pepsi', 'Sprite Lemo', 'Dr Pepper']
+kapacity = [5, 6, 9, 8, 1]
+
+# Generování koláčového grafu
+plt.figure(figsize=(8, 8))
+plt.pie(kapacity, labels=nazvy, autopct='%1.1f%%', startangle=140)
+plt.title('Podíl kapacity položek s cenou vyšší než 15 225 korun')
+plt.axis('equal')  # Aby byl koláčový graf kruhový
+plt.show()
+```

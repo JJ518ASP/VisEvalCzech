@@ -1,0 +1,42 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data from the CSV files
+invoices_data = {
+    "Invoice_ID": [128, 162, 164, 212, 272, 398, 406, 483, 548, 587, 612, 633, 679, 733, 777],
+    "Order_ID": [14, 13, 7, 8, 10, 3, 14, 7, 4, 1, 6, 11, 12, 11, 7],
+    "payment_method_code": ['MasterCard', 'MasterCard', 'Visa', 'Visa', 'American E', 'American E', 'MasterCard', 'Visa', 'MasterCard', 'American E', 'American E', 'Visa', 'MasterCard', 'Visa', 'MasterCard'],
+    "Product_ID": [4, 9, 7, 4, 3, 4, 7, 8, 3, 4, 3, 2, 9, 6, 6],
+    "Order_Quantity": [2, 2, 2, 2, 2, 1, 2, 1, 1, 2, 1, 1, 2, 1, 2]
+}
+
+products_data = {
+    "Product_ID": [11, 154, 156, 179, 188, 21, 216, 232, 233, 250, 273, 300, 46, 81, 83],
+    "Product_Name": ['photo', 'film', 'film', 'film', 'film', 'photo', 'film', 'photo', 'photo', 'photo', 'photo', 'dinning', 'dinning', 'dinning', 'film'],
+    "Product_Price": [4448536, 2302, 17622723, 1432324, 49097627, 22082866, 157216, 22, 4082352, 797, 1577, 30625, 50828, 634660, 900]
+}
+
+# Create DataFrames
+invoices_df = pd.DataFrame(invoices_data)
+products_df = pd.DataFrame(products_data)
+
+# Merge invoices and products to get prices
+merged_df = pd.merge(invoices_df, products_df, on='Product_ID')
+
+# Filter orders with price above 1000
+filtered_orders = merged_df[merged_df['Product_Price'] > 1000]
+
+# Count the number of order dates
+order_dates_count = filtered_orders['Order_ID'].value_counts().sort_index()
+
+# Plotting the line chart
+plt.figure(figsize=(10, 5))
+plt.plot(order_dates_count.index, order_dates_count.values, marker='o')
+plt.title('Number of Orders with Price Above 1000')
+plt.xlabel('Order ID')
+plt.ylabel('Number of Orders')
+plt.xticks(order_dates_count.index)
+plt.grid()
+plt.show()
+```

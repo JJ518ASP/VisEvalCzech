@@ -1,0 +1,40 @@
+Nejprve je potřeba připravit data k analýze. Zde jsou potřebné informace pro generování grafu:
+
+Zakladatelé a jejich příjmy:
+- Andy: 2610
+- Owen: 2175
+- James: 1087
+- Mary: 4350
+- John: 2827
+- Robert: 652
+
+Nyní vytvoříme Python kód pro generování sloupcového grafu, který zobrazuje průměrné příjmy zakladatelů výrobků.
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data zakladatelů a jejich příjmů
+data = {
+    'zakladatel': ['Andy', 'Owen', 'James', 'Mary', 'John', 'Robert'],
+    'prijmy': [2610, 2175, 1087, 4350, 2827, 652]
+}
+
+# Vytvoření DataFrame
+df = pd.DataFrame(data)
+
+# Seřazení podle průměrných příjmů vzestupně
+df_sorted = df.sort_values(by='prijmy')
+
+# Vytvoření sloupcového grafu
+plt.figure(figsize=(10, 6))
+plt.bar(df_sorted['zakladatel'], df_sorted['prijmy'], color='skyblue')
+plt.xlabel('Zakladatel')
+plt.ylabel('Průměrné příjmy')
+plt.title('Průměrné příjmy zakladatelů výrobků')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+``` 
+
+Tento kód vytvoří graf, který zobrazuje průměrné příjmy podle zakladatelů výrobků seřazené vzestupně.

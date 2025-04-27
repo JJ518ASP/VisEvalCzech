@@ -1,0 +1,42 @@
+Nejprve zjistíme počet produktů s cenou vyšší než 21 750 Kč nebo nižší než 10 875 Kč pro každý název produktu. Poté vytvoříme koláčový graf pro zobrazení těchto informací. 
+
+Níže je Python kód pro generování potřebného grafu:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+data = {
+    'id_produktu': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    'nazev_produktu': [
+        'Apple', 'jcrew', 'Apple', 'Apple', 'jcrew',
+        'Apple', 'Apple', 'Sony', 'jcrew', 'Sony',
+        'jcrew', 'gucci', 'gucci', 'Sony', 'gucci'
+    ],
+    'cena_produktu': [
+        119089912.995854, 665352717.240656, 223347.552113, 499307544.213734,
+        128912725.776946, 1677.141655, 9796.033073, 96705674.71118,
+        13545.742527, 155982155.043, 3261.525399, 12915.263085,
+        247694716.435, 8480660.525, 6753119404.61139
+    ]
+}
+
+# Vytvoření DataFrame
+df = pd.DataFrame(data)
+
+# Filtrace produktů podle ceny
+filtered_products = df[(df['cena_produktu'] > 21750) | (df['cena_produktu'] < 10875)]
+
+# Počet produktů podle názvu
+counts = filtered_products['nazev_produktu'].value_counts()
+
+# Vytvoření koláčového grafu
+plt.figure(figsize=(8, 6))
+plt.pie(counts, labels=counts.index, autopct='%1.1f%%', startangle=140)
+plt.title('Počet produktů s cenou > 21 750 Kč nebo < 10 875 Kč podle názvu produktu')
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.show()
+``` 
+
+Tento kód vytvoří koláčový graf, který zobrazuje procentuální zastoupení produktů s cenou vyšší než 21 750 Kč nebo nižší než 10 875 Kč podle jejich názvu.

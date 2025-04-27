@@ -1,0 +1,39 @@
+Nejprve je třeba zpracovat data a zjistit, kolik regionů bylo zasaženo jednotlivými bouřkami. Z dat jsem zjistil, že máme následující informace:
+
+- Bouřky a jejich ID:
+  - Bouřka 1: ID 1
+  - Bouřka 2: ID 2
+  - Bouřka 3: ID 3
+  - Bouřka 4: ID 4
+  - Bouřka 5: ID 5
+
+- Počet zasažených regionů pro každou bouřku:
+  - Bouřka 1: 2 regiony (ID 1)
+  - Bouřka 2: 2 regiony (ID 1)
+  - Bouřka 3: 1 region (ID 3)
+  - Bouřka 4: 1 region (ID 4)
+  - Bouřka 5: 2 regiony (ID 5)
+
+Zde je Python kód pro generování sloupcového grafu:
+
+```python
+import matplotlib.pyplot as plt
+
+# Data
+bourek = ['Jeden', 'Dva', 'Tři', 'Čtyři', 'Pět']
+pocet_regionu = [2, 2, 1, 1, 2]
+
+# Seřazení dat vzestupně podle počtu regionů
+sorted_indices = sorted(range(len(pocet_regionu)), key=lambda k: pocet_regionu[k])
+bourek_sorted = [bourek[i] for i in sorted_indices]
+pocet_regionu_sorted = [pocet_regionu[i] for i in sorted_indices]
+
+# Vytvoření grafu
+plt.bar(bourek_sorted, pocet_regionu_sorted, color='skyblue')
+plt.xlabel('Bouřky')
+plt.ylabel('Počet zasažených regionů')
+plt.title('Počet zasažených regionů jednotlivými bouřkami')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+```

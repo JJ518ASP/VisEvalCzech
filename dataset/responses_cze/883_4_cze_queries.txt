@@ -1,0 +1,69 @@
+Nejprve získáme data, která potřebujeme pro vytvoření koláčového grafu. Chceme zjistit popisy typů služeb a jejich odpovídající ceny produktů, které jsou vyšší než 2 175. Poté vytvoříme koláčový graf pro zobrazení těchto informací.
+
+Data pro graf:
+- Popis typu služby a cena produktu z tabulky `Services`
+- Zjistíme, které z těchto služeb mají cenu nad 2 175.
+
+Níže je Python kód pro generování koláčového grafu:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+data = {
+    'Kod_typu_sluzby': [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 1, 1, 1, 1],
+    'Popis_typu_sluzby': [
+        'poskytovat fotografické služby', 
+        'poskytovat stravovací služby', 
+        'poskytovat nahrávací služby', 
+        'poskytovat služby na propagaci reklamy', 
+        'poskytovat fotografické služby', 
+        'poskytovat stravovací služby', 
+        'poskytovat nahrávací služby', 
+        'poskytovat služby na propagaci reklamy', 
+        'poskytovat fotografické služby', 
+        'poskytovat stravovací služby', 
+        'poskytovat nahrávací služby', 
+        'poskytovat fotografické služby', 
+        'poskytovat stravovací služby', 
+        'poskytovat nahrávací služby', 
+        'poskytovat fotografické služby'
+    ],
+    'Cena_produktu': [
+        693000.3553, 
+        58622.2638, 
+        117369.3836, 
+        431645.4516,
+        693000.3553,
+        158767.9247,
+        198593.4340,
+        117369.3836,
+        431645.4516,
+        58622.2638,
+        117369.3836,
+        431645.4516,
+        693000.3553,
+        58622.2638,
+        117369.3836
+    ]
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Filter services with product price greater than 2175
+filtered_services = df[df['Cena_produktu'] > 2175]
+
+# Count occurrences of each service type
+service_counts = filtered_services['Popis_typu_sluzby'].value_counts()
+
+# Create pie chart
+plt.figure(figsize=(8, 8))
+plt.pie(service_counts, labels=service_counts.index, autopct='%1.1f%%', startangle=90)
+plt.title('Podíl typů služeb s cenou produktu nad 2 175')
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.show()
+```
+
+Tento kód vytvoří koláčový graf, který zobrazuje podíly jednotlivých typů služeb, jejichž cena produktu je vyšší než 2 175

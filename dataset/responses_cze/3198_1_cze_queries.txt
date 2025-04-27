@@ -1,0 +1,27 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+votes_data = {
+    'stat': ['NY', 'NY', 'CA', 'NJ']
+}
+
+# Vytvoření DataFrame
+votes_df = pd.DataFrame(votes_data)
+
+# Počet unikátních států
+unique_states = votes_df['stat'].nunique()
+state_counts = votes_df['stat'].value_counts()
+
+# Příprava dat pro koláčový graf
+labels = state_counts.index
+sizes = state_counts.values
+
+# Vytvoření koláčového grafu
+plt.figure(figsize=(8, 6))
+plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.title(f'Poměr hlasování podle států (Celkový počet států: {unique_states})')
+plt.show()
+```

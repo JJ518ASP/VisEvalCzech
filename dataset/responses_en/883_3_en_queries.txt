@@ -1,0 +1,29 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data for Services with Product Prices
+data = {
+    'Service_Type_Code': [1, 2, 3, 4, 1, 2, 3, 1, 2, 3, 1, 1, 1, 2, 2],
+    'Product_Price': [58932775.8822, 2704.4719, 6888.8306, 31862.0853, 
+                      213.9459, 8004.988, 5396.2935, 7299.6747, 
+                      641544.2835, 827055.7309, 9130.7326, 
+                      84063402.4351, 187358.6469, 4082352, 30625]
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Filter services with prices greater than 100
+filtered_services = df[df['Product_Price'] > 100]
+
+# Count the number of occurrences of each service type
+service_counts = filtered_services['Service_Type_Code'].value_counts()
+
+# Create a pie chart
+plt.figure(figsize=(8, 6))
+plt.pie(service_counts, labels=service_counts.index, autopct='%1.1f%%', startangle=140)
+plt.title('Distribution of Service Types with Product Prices Greater than 100')
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.show()
+```

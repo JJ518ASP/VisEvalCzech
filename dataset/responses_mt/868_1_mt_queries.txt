@@ -1,0 +1,46 @@
+Nejprve je potřeba zjistit, které objednávky mají cenu nad 1000. Z datových souborů získáme potřebné informace o objednávkách a produktech. Následně sečteme objednávky s cenou nad 1000 a vytvoříme čárový graf.
+
+Zde jsou potřebné data a python kód pro generování grafu:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Zde jsou data z produktů a objednávek
+products = {
+    'Product_ID': [11, 154, 156, 179, 188, 21, 216, 232, 233, 250, 273, 300, 46, 81, 83],
+    'Product_Price': [4448536, 2302, 17622723, 1432324, 49097627, 22082866, 157216, 22, 4082352, 797, 1577, 30625, 50828, 634660, 900]
+}
+
+orders = {
+    'Order_Item_ID': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    'Order_ID': [3, 15, 12, 4, 5, 6, 10, 4, 12, 11, 2, 12, 6, 1, 7],
+    'Product_ID': [233, 300, 300, 273, 46, 233, 10, 156, 216, 46, 300, 156, 233, 81, 300],
+    'Order_Quantity': [1, 2, 1, 1, 2, 1, 2, 1, 1, 1, 1, 2, 1, 1, 2]
+}
+
+# Vytvoření DataFrame
+products_df = pd.DataFrame(products)
+orders_df = pd.DataFrame(orders)
+
+# Spojení dat podle Product_ID
+merged_df = orders_df.merge(products_df, on='Product_ID')
+
+# Filtrace objednávek s cenou nad 1000
+filtered_orders = merged_df[merged_df['Product_Price'] * merged_df['Order_Quantity'] > 1000]
+
+# Počítání počtu objednávek podle Order_ID
+order_counts = filtered_orders['Order_ID'].value_counts()
+
+# Vytvoření čárového grafu
+plt.figure(figsize=(10, 6))
+plt.plot(order_counts.index, order_counts.values, marker='o')
+plt.title('Počet objednávek s cenou nad 1000')
+plt.xlabel('Order ID')
+plt.ylabel('Počet objednávek')
+plt.xticks(order_counts.index)
+plt.grid()
+plt.show()
+``` 
+
+Tento kód vytvoří čárový graf, který zobrazuje počet objednávek, jejichž cena přesahuje 1000.

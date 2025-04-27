@@ -1,0 +1,27 @@
+Nejprve zjistíme, které typy služeb mají cenu vyšší než 2 175. Z dat ve sloupci "Cena_produktu" v tabulce "Services" můžeme najít tyto služby.
+
+Zde jsou ceny služeb nad 2 175:
+
+- 396, foto, 693 000,3553
+- 191, film, 1 281 787 875,4378
+- 779, film, 198 593,4340
+- 630, foto, 431 645 451,6575
+- 640, stravování, 158 767,9247
+- 662, stravování, 13 953 588,1661
+
+Nyní můžeme vytvořit koláčový graf s počtem typů služeb, které splňují tuto podmínku.
+
+```python
+import matplotlib.pyplot as plt
+
+# Popisy typů služeb a jejich počty
+service_types = ['foto', 'film', 'stravování']
+counts = [3, 3, 2]  # foto = 3, film = 3, stravování = 2
+
+# Vytvoření koláčového grafu
+plt.figure(figsize=(8, 6))
+plt.pie(counts, labels=service_types, autopct='%1.1f%%', startangle=140)
+plt.title('Procentuální podíl typů služeb s cenou vyšší než 2 175')
+plt.axis('equal')  # Zajistí, že koláčový graf bude kruhový
+plt.show()
+```

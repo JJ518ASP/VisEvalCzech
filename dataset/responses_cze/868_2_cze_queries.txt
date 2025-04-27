@@ -1,0 +1,31 @@
+Nejprve je třeba zpracovat data objednávek a ceny produktů. Zde jsou potřebné údaje pro vytvoření grafu:
+
+- ID_objednavky z tabulky `Customer_Orders`
+- Cena_produktu z tabulky `Products`
+- Počet objednávek, které mají cenu vyšší než 21 750.
+
+Následující Python kód použijeme k vytvoření čárového grafu, který zobrazuje počet objednávek s cenou vyšší než 21 750:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+products = {
+    'ID_produktu': [11, 154, 156, 179, 188, 21, 216, 232, 233, 250, 273, 300, 46, 81, 83],
+    'Cena_produktu': [96755658, 50069, 383294226, 31153047, 1067873388, 480302336, 3419448, 479, 88791156, 17335, 34300, 666094, 1105509, 13803855, 19575]
+}
+
+customer_orders = {
+    'ID_objednavky': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+    'ID_zakaznika': [516, 418, 712, 240, 418, 556, 546, 240, 240, 546, 304, 516, 240, 546, 712],
+    'ID_obchodu': [231, 229, 229, 229, 150, 344, 291, 231, 512, 518, 421, 231, 512, 444, 231],
+    'Datum_objednavky': ['03. 08. 1994 12:34:58', '10. 07. 2014 10:56:01', '20. 06. 1981 16:29:43', '20. 11. 1999 18:48:05',
+                         '16. 02. 1973 19:28:34', '13. 11. 1988 15:42:13', '10. 03. 1998 14:01:00', '01. 09. 1979 06:29:01',
+                         '22. 11. 1993 14:56:28', '29. 05. 1985 01:20:18', '03. 07. 2000 21:41:50', '05. 01. 2011 08:01:07',
+                         '24. 06. 2003 11:44:51', '12. 05. 1971 10:12:46', '02. 04. 2008 18:00:15']
+}
+
+# Convert to DataFrames
+df_products = pd.DataFrame(products)
+df_orders = pd.DataFrame(customer

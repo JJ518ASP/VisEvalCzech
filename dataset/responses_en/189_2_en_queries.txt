@@ -1,0 +1,39 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+data = {
+    'date_address_to': [
+        '2018-03-15', '2018-03-02', '2018-02-25', '2018-03-23', '2018-03-12',
+        '2018-02-27', '2018-03-04', '2018-03-20', '2018-03-22', '2018-03-04',
+        '2018-03-12', '2018-03-04', '2018-03-14', '2018-03-01', '2018-03-15',
+        '2018-03-12', '2018-03-02', '2018-03-12', '2018-03-18', '2018-03-18',
+        '2018-03-15', '2018-03-05'
+    ],
+    'other_details': [
+        'house', 'house', 'apartment', 'house', 'apartment',
+        'house', 'house', 'house', 'house', 'house',
+        'house', 'house', 'apartment', 'house', 'apartment',
+        'apartment', 'apartment', 'apartment', 'house', 'house', 'house',
+        'house', 'apartment'
+    ]
+}
+
+df = pd.DataFrame(data)
+df['date_address_to'] = pd.to_datetime(df['date_address_to'])
+df['month'] = df['date_address_to'].dt.to_period('M')
+
+# Group by month and other_details
+grouped = df.groupby(['month', 'other_details']).size().unstack(fill_value=0)
+
+# Plotting
+grouped.plot(kind='bar', stacked=True)
+plt.title('Distribution of Address Change by Month and Other Details')
+plt.xlabel('Month')
+plt.ylabel('Count of Address Changes')
+plt.xticks(rotation=45)
+plt.legend(title='Other Details')
+plt.tight_layout()
+plt.show()
+```

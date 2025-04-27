@@ -1,0 +1,34 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data from the VOTES.csv
+votes_data = {
+    'vote_id': [1, 2, 3, 5],
+    'phone_number': ['7182887233', '7148407040', '6209222712', '5112677315'],
+    'state': ['NY', 'NY', 'CA', 'NJ'],
+    'contestant_number': [2, 3, 3, 5],
+    'created': ['2018-03-09 19:03:21', '2018-03-09 19:03:36', '2018-03-09 19:03:39', '2018-03-09 19:03:40']
+}
+
+# Create a DataFrame
+votes_df = pd.DataFrame(votes_data)
+
+# Calculate the number of votes per state
+state_counts = votes_df['state'].value_counts()
+
+# Total number of states
+total_states = state_counts.count()
+
+# Prepare data for pie chart
+labels = state_counts.index
+sizes = state_counts.values
+colors = ['gold', 'lightcoral', 'lightskyblue', 'yellowgreen']
+
+# Create a pie chart
+plt.figure(figsize=(8, 6))
+plt.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=140)
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.title(f'Total States: {total_states}')
+plt.show()
+```

@@ -1,0 +1,30 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+storm_data = {
+    'Storm_ID': [1, 2, 3, 4, 5],
+    'Název': ['Jeden', 'Dva', 'Tři', 'Čtyři', 'Pět'],
+    'Number_city_affected': [10.0 + 15.0, 0, 30.0, 22.0, 37.0 + 12.0]  # Sčítání zasažených měst
+}
+
+# Vytvoření DataFrame
+df_storm = pd.DataFrame(storm_data)
+
+# Seřazení podle počtu zasažených oblastí
+df_storm_sorted = df_storm.sort_values(by='Number_city_affected')
+
+# Vytvoření sloupcového grafu
+plt.figure(figsize=(10, 6))
+plt.bar(df_storm_sorted['Název'], df_storm_sorted['Number_city_affected'], color='skyblue')
+plt.xlabel('Název bouře')
+plt.ylabel('Počet zasažených oblastí')
+plt.title('Počet zasažených oblastí podle názvu bouře')
+plt.xticks(rotation=45)
+plt.grid(axis='y')
+
+# Zobrazení grafu
+plt.tight_layout()
+plt.show()
+```

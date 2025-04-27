@@ -1,0 +1,42 @@
+Nejprve je potřeba zjistit, kolik typů služeb má cenu produktu nad 2 175. Budeme pracovat s daty v tabulce `Services.csv` a `Products.csv`, kde nejprve filtrujeme produkty podle ceny a poté zjistíme, kolik typů služeb splňuje tuto podmínku.
+
+Zde je Python kód pro generování koláčového grafu:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+services_data = {
+    'ID_sluzby': [191, 219, 220, 396, 414, 421, 525, 597, 630, 640, 662, 773, 779, 798, 840],
+    'Kod_typu_sluzby': [1, 2, 1, 3, 2, 2, 4, 3, 4, 2, 2, 3, 1, 1, 1],
+    'Cena_produktu': [1281787875.4378, 58822.2638, 149832.0655, 693000.3553, 4653.3233, 
+                      174108.4890, 76111141.2154, 117369.3836, 431645451.6575, 
+                      158767.9247, 13953588.1661, 17988462.1471, 198593.4340, 
+                      1828379002.9634, 4075050.5701]
+}
+
+# Vytvoření DataFrame
+services_df = pd.DataFrame(services_data)
+
+# Filtrujeme služby s cenou produktu nad 2175
+filtered_services = services_df[services_df['Cena_produktu'] > 2175]
+
+# Počítáme počty jednotlivých typů služeb
+service_counts = filtered_services['Kod_typu_sluzby'].value_counts()
+
+# Příprava dat pro koláčový graf
+labels = service_counts.index
+sizes = service_counts.values
+
+# Vytvoření koláčového grafu
+plt.figure(figsize=(8, 8))
+plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
+plt.title('Procentuální rozložení typů služeb s cenou produktu nad 2 175')
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+
+# Zobrazení grafu
+plt.show()
+``` 
+
+Tento kód vytvoří koláčový graf, který zobrazuje procentuální rozložení typů služeb s cenou produktu nad 2 175.

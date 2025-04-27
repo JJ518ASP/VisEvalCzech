@@ -1,0 +1,41 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+manufacturers_data = {
+    'kod': ['Sony', 'Creative Labs', 'Hewlett-Packard', 'Iomega', 'Fujitsu', 'Winchester'],
+    'nazev': ['Tokio', 'Austin', 'Los Angeles', 'Peking', 'Tchaj-wan', 'Paris'],
+    'sidlo': ['Andy', 'Owen', 'James', 'Mary', 'John', 'Robert'],
+    'Prijmy': [2610, 2175, 1087, 4350, 2827, 652]
+}
+
+products_data = {
+    'kod': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+    'nazev': ['Pevný disk', 'Paměť', 'Jednotka ZIP', 'Disketa', 'Monitor', 'Jednotka DVD', 'Jednotka CD', 'Tiskárna', 'Tonerová kazeta', 'Vypalovačka DVD', 'Jednotka DVD'],
+    'cena': [5220, 2610, 3263, 109, 5220, 3915, 1958, 5873, 1436, 3915, 3263],
+    'vyrobce': [5, 6, 4, 6, 1, 2, 2, 3, 3, 2, 3]
+}
+
+manufacturers_df = pd.DataFrame(manufacturers_data)
+products_df = pd.DataFrame(products_data)
+
+# Merge dataframes on manufacturer code
+merged_df = pd.merge(products_df, manufacturers_df, left_on='vyrobce', right_on='kod')
+
+# Group by 'sidlo' and sum the 'Prijmy'
+grouped_data = merged_df.groupby('sidlo')['Prijmy'].sum().reset_index()
+
+# Sort by 'sidlo'
+grouped_data = grouped_data.sort_values(by='sidlo')
+
+# Plot
+plt.figure(figsize=(10, 6))
+plt.bar(grouped_data['sidlo'], grouped_data['Prijmy'], color='skyblue')
+plt.title('Součet tržeb podle sídla výrobce')
+plt.xlabel('Sídlo')
+plt.ylabel('Součet tržeb')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+```

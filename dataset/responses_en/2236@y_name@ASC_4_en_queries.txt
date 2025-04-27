@@ -1,0 +1,42 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data from Manufacturers.csv
+manufacturers_data = {
+    'Code': [1, 2, 3, 4, 5, 6],
+    'Name': ['Sony', 'Creative Labs', 'Hewlett-Packard', 'Iomega', 'Fujitsu', 'Winchester'],
+    'Headquarter': ['Tokyo', 'Austin', 'Los Angeles', 'Beijing', 'Taiwan', 'Paris'],
+    'Founder': ['Andy', 'Owen', 'James', 'Mary', 'John', 'Robert'],
+    'Revenue': [120.0, 100.0, 50.0, 200.0, 130.0, 30.0]
+}
+
+# Data from Products.csv
+products_data = {
+    'Code': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+    'Name': ['Hard drive', 'Memory', 'ZIP drive', 'Floppy disk', 'Monitor', 'DVD drive', 'CD drive', 'Printer', 'Toner cartridge', 'DVD burner', 'DVD drive'],
+    'Price': [240, 120, 150, 5, 240, 180, 90, 270, 66, 180, 150],
+    'Manufacturer': [5, 6, 4, 6, 1, 2, 2, 3, 3, 2, 3]
+}
+
+# Create DataFrames
+manufacturers_df = pd.DataFrame(manufacturers_data)
+products_df = pd.DataFrame(products_data)
+
+# Merge DataFrames on Manufacturer
+merged_df = pd.merge(products_df, manufacturers_df, left_on='Manufacturer', right_on='Code')
+
+# Group by Founder and calculate average Revenue
+revenue_by_founder = merged_df.groupby('Founder')['Revenue'].mean().reset_index()
+
+# Sort by Revenue in ascending order
+revenue_by_founder = revenue_by_founder.sort_values(by='Revenue')
+
+# Plotting
+plt.figure(figsize=(10, 6))
+plt.barh(revenue_by_founder['Founder'], revenue_by_founder['Revenue'], color='skyblue')
+plt.xlabel('Average Revenue')
+plt.title('Average Revenue by Founder')
+plt.grid(axis='x')
+plt.show()
+```

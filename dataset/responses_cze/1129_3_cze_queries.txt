@@ -1,0 +1,30 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+data = {
+    "kod_typu_produktu": ["Oblečení", "Oblečení", "Oblečení", "Oblečení", "Oblečení", 
+                          "Oblečení", "Oblečení", "Oblečení", "Oblečení", "Hardware", 
+                          "Hardware", "Hardware", "Hardware", "Hardware", "Hardware"],
+    "cena_produktu": [15980.38, 14947.25, 15119.73, 20435.65, 11625.81, 
+                       8891.83, 19934.53, 19975.42, 13155.70, 17699.28, 
+                       17481.35, 20552.88, 13700.11, 13321.01, 21128.82]
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Group by product type and get max price
+max_prices = df.groupby('kod_typu_produktu')['cena_produktu'].max()
+
+# Plotting
+plt.figure(figsize=(10, 5))
+max_prices.plot(kind='bar', color='skyblue')
+plt.title('Maximální cena výrobku podle typu')
+plt.xlabel('Kód typu výrobku')
+plt.ylabel('Maximální cena výrobku')
+plt.xticks(rotation=45)
+plt.grid(axis='y')
+plt.show()
+```

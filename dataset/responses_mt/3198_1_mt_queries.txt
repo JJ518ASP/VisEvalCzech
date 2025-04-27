@@ -1,0 +1,30 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+votes_data = {
+    "vote_id": [1, 2, 3, 5],
+    "phone_number": [7182887233, 7148407040, 6209222712, 5112677315],
+    "stát": ["NY", "NY", "CA", "NJ"],
+    "contestant_number": [2, 3, 3, 5],
+    "vytvořeno": ["2018-03-09 19:03:21", "2018-03-09 19:03:36", "2018-03-09 19:03:39", "2018-03-09 19:03:40"]
+}
+
+# Vytvoření DataFrame
+votes_df = pd.DataFrame(votes_data)
+
+# Počítání výskytů států
+state_counts = votes_df['stát'].value_counts()
+
+# Generování koláčového grafu
+plt.figure(figsize=(8, 6))
+plt.pie(state_counts, labels=state_counts.index, autopct='%1.1f%%', startangle=140)
+plt.title('Poměr hlasování podle států')
+plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+plt.show()
+
+# Celkový počet států
+total_states = len(state_counts)
+print("Celkový počet států:", total_states)
+```

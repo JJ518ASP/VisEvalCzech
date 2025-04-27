@@ -1,0 +1,47 @@
+Nejprve je třeba zpracovat data a zjistit průměrné příjmy podle zakladatelů. Poté vytvoříme sloupcový graf. Zde je Python kód pro generování požadovaného grafu:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data z Manufacturers.csv
+data_manufacturers = {
+    'Kód': [1, 2, 3, 4, 5, 6],
+    'Název': ['Sony', 'Kreativní laboratoře', 'Hewlett-Packard', 'Iomega', 'Fujitsu', 'Winchester'],
+    'Sídlo': ['Tokio', 'Austin', 'Los Angeles', 'Peking', 'Tchaj-wan', 'Paris'],
+    'Zakladatel': ['Andy', 'Owen', 'James', 'Mary', 'John', 'Robert'],
+    'Příjmy': [120.0, 100.0, 50.0, 200.0, 130.0, 30.0]
+}
+
+# Data z Products.csv
+data_products = {
+    'Kód': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+    'Název': ['Pevný disk', 'Paměť', 'Jednotka ZIP', 'Disketa', 'Monitor', 'Jednotka DVD', 
+              'Jednotka CD', 'Tiskárna', 'Tonerová kazeta', 'Vypalovačka DVD', 'Jednotka DVD'],
+    'Cena': [240, 120, 150, 5, 240, 180, 90, 270, 66, 180, 150],
+    'Výrobce': [5, 6, 4, 6, 1, 2, 2, 3, 3, 2, 3]
+}
+
+# Vytvoření DataFrame
+df_manufacturers = pd.DataFrame(data_manufacturers)
+df_products = pd.DataFrame(data_products)
+
+# Sloučení dat podle výrobce
+merged_df = df_products.merge(df_manufacturers, left_on='Výrobce', right_on='Kód')
+
+# Výpočet průměrných příjmů podle zakladatelů
+average_income = merged_df.groupby('Zakladatel')['Příjmy'].mean().reset_index()
+
+# Seřazení podle průměrných příjmů vzestupně
+average_income = average_income.sort_values(by='Příjmy')
+
+# Vytvoření sloupcového grafu
+plt.figure(figsize=(10, 6))
+plt.bar(average_income['Zakladatel'], average_income['Příjmy'], color='skyblue')
+plt.xlabel('Zakladatel')
+plt.ylabel('Průměrné příjmy')
+plt.title('Průměrné příjmy podle zakladatelů')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+```

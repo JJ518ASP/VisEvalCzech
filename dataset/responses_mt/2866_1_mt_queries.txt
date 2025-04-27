@@ -1,0 +1,21 @@
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data pro generování grafu
+region_data = {
+    'Region_id': [1, 2, 3, 4, 5],
+    'Název_oblasti': ['Afghánistán', 'Albánie', 'Alžírsko', 'Americká Samoa', 'Andorra'],
+    'Storm_Count': [2, 2, 1, 1, 1]  # Počet bouří pro každý region
+}
+
+# Vytvoření DataFrame
+df = pd.DataFrame(region_data)
+
+# Vytvoření koláčového grafu
+plt.figure(figsize=(8, 8))
+plt.pie(df['Storm_Count'], labels=df['Název_oblasti'], autopct='%1.1f%%', startangle=90)
+plt.title('Počet bouří podle regionů')
+plt.axis('equal')  # Zajištění, že graf je kruhový
+plt.show()
+```

@@ -1,0 +1,49 @@
+Nejprve je třeba extrahovat data o `datum_adresy_do` a `ostatní_detaily` ze souboru `Student_Addresses.csv`. Poté můžeme rozdělit `datum_adresy_do` podle měsíců a počítat výskyty pro každý měsíc, barevně odlišit podle `ostatní_detaily` a nakonec vizualizovat pomocí sloupcového grafu.
+
+Zde jsou potřebná data:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Data
+data = {
+    'datum_adresy_do': [
+        '2018-03-15 10:37:19', '2018-03-02 00:19:57', 
+        '2018-02-25 05:21:34', '2018-03-23 09:52:56', 
+        '2018-03-12 17:21:24', '2018-02-27 04:45:57', 
+        '2018-03-04 17:04:35', '2018-03-20 09:02:48', 
+        '2018-03-22 17:56:20', '2018-03-04 06:51:19', 
+        '2018-03-04 06:05:45', '2018-03-14 09:12:05', 
+        '2018-03-06 21:41:20', '2018-03-12 02:57:48', 
+        '2018-03-04 13:24:28', '2018-03-15 04:44:58', 
+        '2018-03-05 21:12:37', '2018-03-14 17:00:44', 
+        '2018-03-18 03:28:47'
+    ],
+    'ostatní_detaily': [
+        'dům', 'dům', 'apartmán', 'dům', 
+        'apartmán', 'dům', 'dům', 'dům', 
+        'dům', 'dům', 'dům', 'apartmán', 
+        'dům', 'dům', 'apartmán', 'apartmán', 
+        'apartmán', 'apartmán', 'dům'
+    ]
+}
+
+# Vytvoření DataFrame
+df = pd.DataFrame(data)
+
+# Převod na datetime
+df['datum_adresy_do'] = pd.to_datetime(df['datum_adresy_do'])
+
+# Extrakce měsíce a roku
+df['month_year'] = df['datum_adresy_do'].dt.to_period('M')
+
+# Počet výskytů pro každý měsíc a ostatní detaily
+count_data = df.groupby(['month_year', 'ostatní_detaily']).size().unstack(fill_value=0)
+
+# Vytvoření sloupcového grafu
+count_data.plot(kind='bar', stacked=True, color=['#ff9999','#66b3ff','#99ff99'])
+plt.title('Počet adres podle měsíce a ostatních detailů')
+plt.xlabel('Měsíc a Rok')
+plt.ylabel('Počet adres')
+plt.xticks
