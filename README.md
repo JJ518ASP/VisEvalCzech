@@ -21,12 +21,12 @@ Repozitář **VisEvalCzech** obsahuje českou lokalizaci benchmarku VisEval pro 
 | `generate_from_queries_final.py`| Hlavní skript projektu, ve kterém jsou definovány specifikace a konfigurace použitého jazykového modelu. Obsahuje kompletní logiku pro generování vizualizačních výstupů, zpracování promptů a manipulaci s vygenerovanými hodnotami. |
 | `nl_queries_selected.csv`       | CSV soubor obsahující vybraná data pro generování promptů. Obsahuje přirozeně formulované dotazy v angličtině, strojově přeložené češtině a lokalizované češtině, které jsou vstupem pro jazykový model při generování vizualizací.      |
 
-##Instalace
+## Instalace
 
 Pro spuštění pipeline je potřebné přidat vlastní .env soubor s API klíčem do OpenAI API (OPENAI_API_KEY=).
 
-###Knihovny
+### Knihovny
 
-<pre> ```python pip install openai
+<pre>pip install openai
 pip install pandas
-pip install matplotlib``` </pre>
+pip install matplotlib</pre>
