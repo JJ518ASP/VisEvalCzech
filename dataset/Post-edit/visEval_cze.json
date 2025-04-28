@@ -2532,10 +2532,10 @@
             "sort": null
         },
         "nl_queries": [
-            "Ukaž mi rozložení date_address_to a množství date_address_to. Seskup data podle atributu other_details a rozděl date_address_to podle měsíce ve sloupcovém grafu.",
-            "Nakresli sloupcový graf rozložení date_address_to a množství date_address_to. Seskup podle atributu other_details a rozděl date_address_to podle měsíce.",
-            "Sloupcový graf zobrazuje rozložení date_address_to a množství date_address_to a seskupení podle atributu other_details a rozdělení date_address_to podle měsíců.",
-            "Zjisti date_address_to a množství date_address_to a barevně data rozděl podle atributu other_details a date_address_to rozděl podle měsíců a vizualizuj je pomocí sloupcového grafu."
+            "Ukaž mi rozložení datum_na_adresu a množství datum_na_adresu. Seskup data podle atributu dalsi_detaily a rozděl datum_na_adresu podle měsíce ve sloupcovém grafu.",
+            "Nakresli sloupcový graf rozložení datum_na_adresu a množství datum_na_adresu. Seskup podle atributu dalsi_detaily a rozděl datum_na_adresu podle měsíce.",
+            "Sloupcový graf zobrazuje rozložení datum_na_adresu a množství datum_na_adresu a seskupení podle atributu dalsi_detaily a rozdělení datum_na_adresu podle měsíců.",
+            "Zjisti datum_na_adresu a množství datum_na_adresu a barevně data rozděl podle atributu dalsi_detaily a datum_na_adresu rozděl podle měsíců a vizualizuj je pomocí sloupcového grafu."
         ],
         "irrelevant_tables": [
             "Teachers",
@@ -3014,7 +3014,7 @@
             "sort": null
         },
         "nl_queries": [
-            "Zjisti date_address_to a součet monthly_rental, seskup je podle atributu other_details a rozděl date_address_to podle dnů v týdnu a vizualizuj je pomocí sloupcového grafu."
+            "Zjisti datum_adresa_od a součet mesicni_pronajem_kc, seskup je podle atributu dalsi_detaily a rozděl datum_adresa_od podle dnů v týdnu a vizualizuj je pomocí sloupcového grafu."
         ],
         "irrelevant_tables": [
             "Ref_Detention_Type",
@@ -11438,10 +11438,10 @@
             "sort": null
         },
         "nl_queries": [
-            "Zjisti data objednávek s cenou nad 1000 a spočítej je pomocí čárového grafu",
-            "Jaká jsou data objednávek s cenou vyšší než 1000 a spočítej je pomocí čárového grafu",
-            "Čárový graf pro zjištění počtu dat objednávek s cenou nad 1000.",
-            "Čárový graf o tom, jaký je počet dat objednávek s cenou vyšší než 1000?"
+            "Zjisti data objednávek s cenou nad 21 750 a spočítej je pomocí čárového grafu",
+            "Jaká jsou data objednávek s cenou vyšší než 21 750 a spočítej je pomocí čárového grafu",
+            "Čárový graf pro zjištění počtu dat objednávek s cenou nad 21 750.",
+            "Čárový graf o tom, jaký je počet dat objednávek s cenou vyšší než 21 750?"
         ],
         "irrelevant_tables": [
             "Performers",
@@ -11695,10 +11695,10 @@
             "sort": null
         },
         "nl_queries": [
-            "Uveď popisy typů služeb, které stojí více než 100, a spočítej je pomocí koláčového grafu",
-            "Koláčový graf o tom, kolik je popisů typů služeb s cenou produktu nad 100.",
-            "Koláčový graf, který mi poskytne počet popisů typů služeb, které stojí více než 100.",
-            "Jaké jsou popisy typů služeb s cenou produktu nad 100 a spočítej je pomocí koláčového grafu"
+            "Uveď popisy typů služeb, které stojí více než 2 175, a spočítej je pomocí koláčového grafu",
+            "Koláčový graf o tom, kolik je popisů typů služeb s cenou produktu nad 2 175.",
+            "Koláčový graf, který mi poskytne počet popisů typů služeb, které stojí více než 2 175.",
+            "Jaké jsou popisy typů služeb s cenou produktu nad 2 175 a spočítej je pomocí koláčového grafu"
         ],
         "irrelevant_tables": [
             "Drama_Workshop_Groups",
@@ -12881,7 +12881,7 @@
             "sort": null
         },
         "nl_queries": [
-            "Zobraz počet produktů s cenou vyšší než 1000 nebo nižší než 500 pro každý název produktu v koláčovém grafu."
+            "Zobraz počet produktů s cenou vyšší než 21 750 Kč nebo nižší než 10 875 pro každý název produktu v koláčovém grafu."
         ],
         "irrelevant_tables": [
             "Order_Items",
@@ -27796,9 +27796,9 @@
             "sort": null
         },
         "nl_queries": [
-            "Zjisti název a kapacitu výrobků s cenou vyšší než 700 (v USD). Vizualizace pomocí koláčového grafu.",
-            "Koláčový graf o tom, který obsah katalogu má cenu vyšší než 700 dolarů. Zobraz názvy a kapacity jejich katalogových položek.",
-            "Který obsah katalogu má cenu vyšší než 700 dolarů? Zobraz názvy a kapacity jejich položek v katalogu pomocí koláčového grafu."
+            "Zjisti název a kapacitu výrobků s cenou vyšší než 15 225 (v CZK). Vizualizace pomocí koláčového grafu.",
+            "Koláčový graf o tom, který obsah katalogu má cenu vyšší než 15 225 korun. Zobraz názvy a kapacity jejich katalogových položek.",
+            "Který obsah katalogu má cenu vyšší než 15 225 korun? Zobraz názvy a kapacity jejich položek v katalogu pomocí koláčového grafu."
         ],
         "irrelevant_tables": [
             "Attribute_Definitions",
@@ -38038,7 +38038,7 @@
         },
         "nl_queries": [
             "Vypiš názvy bouří a počet zasažených oblastí pro každou bouři pomocí sloupcového grafu a zobraz celkový počet ve vzestupném pořadí.",
-            "Vrať sloupcový graf o tom, kolik regionů bylo zasaženo každou bouří?Chci je seřadit vzestupně podle osy y.",
+            "Vrať sloupcový graf o tom, kolik regionů bylo zasaženo každou bouří? Chci je seřadit vzestupně podle osy y.",
             "Kolik regionů bylo zasaženo jednotlivými bouřkami? Vizualizuj pomocí sloupcového grafu, seřaď je vzestupně podle Y, prosím."
         ],
         "irrelevant_tables": [],
@@ -55134,7 +55134,7 @@
             }
         },
         "nl_queries": [
-            "Zobraz jednotlivé státy a počet adres v každém státě. Zobraz sloupcový graf, seřaď X sestupně."
+            "Zobraz jednotlivé kraje a počet adres v každém kraji. Zobraz sloupcový graf, seřaď X sestupně."
         ],
         "irrelevant_tables": [
             "Customer_Address_History",
@@ -60093,7 +60093,7 @@
             }
         },
         "nl_queries": [
-            "Najdi popisy typů transakcí a data, pokud je počet akcií přepočítán, seskup podle typu transakce, spočítej datum transakce a datum rozděl do intervalu dnů v týdnu. Zobraz ve sloupcovém grafu, chci zobrazit osu y od nejvyššího po nejnižší pořadí."
+            "Najdi popisy typů transakcí a data, pokud je počet akcií přepočítán, seskup podle typu transakce, spočítej datum transakce a datum rozděl do intervalu dnů v týdnu. Zobraz ve sloupcovém grafu. Chci zobrazit osu y od nejvyššího po nejnižší pořadí."
         ],
         "irrelevant_tables": [
             "Lots",
