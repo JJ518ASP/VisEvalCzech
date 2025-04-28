@@ -17,3 +17,17 @@ Repozitář **VisEvalCzech** obsahuje českou lokalizaci benchmarku VisEval pro 
 
 ---
 
+## Popis klíčových souborů a skriptů
+
+- **validace.xlsx**  
+  Obsahuje podrobné porovnání výsledků experimentu. Slouží k dokumentaci a analýze přesnosti, interpretovatelnosti a dalších kvalitativních parametrů vygenerovaných vizualizací v jednotlivých jazykových verzích. Umožňuje přehledné srovnání úspěšnosti modelu v různých scénářích podle metodiky popsané v práci.
+
+- **run.py**  
+  Jednoduchý spouštěcí skript, který slouží k inicializaci a řízení běhu hlavního experimentu. Volá hlavní funkci a nastavuje základní parametry běhu.
+
+- **generate_from_queries_final.py**  
+  Hlavní skript projektu, ve kterém jsou definovány specifikace a konfigurace použitého jazykového modelu. Obsahuje kompletní logiku pro generování vizualizačních výstupů na základě vstupních dotazů, zpracování promptů, manipulaci s vygenerovanými hodnotami a případné ukládání výsledků. Tento skript je jádrem celé experimentální pipeline a umožňuje detailní nastavení parametrů generování.
+
+- **nl_queries_selected.csv**  
+  CSV soubor obsahující vybraná data pro generování promptů. Obsahuje přirozeně formulované dotazy v angličtině, strojově přeložené češtině a lokalizované češtině, které jsou vstupem pro jazykový model při generování vizualizací. Slouží jako základní datová sada pro testování a evaluaci schopností modelu.
+
