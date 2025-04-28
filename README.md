@@ -1,7 +1,7 @@
 # VisEvalCzech
 ## Struktura a popis hlavních podsložek a souborů repozitáře VisEvalCzech
 
-Repozitář **VisEvalCzech** obsahuje českou lokalizaci benchmarku VisEval pro hodnocení schopností LLMs generovat vizualizace na základě přirozeného jazyka. Níže je popsána struktura hlavních složek a klíčových souborů, s důrazem na jejich funkci.
+Repozitář **VisEvalCzech** obsahuje českou lokalizaci benchmarku [VisEval](https://github.com/microsoft/VisEval) pro hodnocení schopností LLMs generovat vizualizace na základě přirozeného jazyka. Níže je popsána struktura hlavních složek a klíčových souborů, s důrazem na jejich funkci.
 
 ---
 
