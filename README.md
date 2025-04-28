@@ -23,7 +23,7 @@ Repozitář **VisEvalCzech** obsahuje českou lokalizaci benchmarku VisEval pro 
 
 ## Instalace
 
-Pro spuštění pipeline je potřebné přidat vlastní .env soubor s API klíčem do OpenAI API (OPENAI_API_KEY=).
+Pro spuštění pipeline je potřebné přidat vlastní .env soubor s API klíčem do OpenAI API (OPENAI_API_KEY=). Poté stačí pustit **run.py** s vybraným typem generování (cze_queries, mt_queries, en_queries).
 
 ### Knihovny
 
