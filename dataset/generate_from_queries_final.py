@@ -8,7 +8,7 @@ import openai
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# 🔧 KONFIGURACE
+# KONFIGURACE
 QUERY_CSV_PATH = "nl_queries_selected.csv"         # CSV s id, prompty, db_folder
 BASE_DATA_FOLDER = "databases_cze"         # základní složka s podsložkami (pojmenované podle db_folder)
 OUTPUT_RESPONSES = "responses_cze"
